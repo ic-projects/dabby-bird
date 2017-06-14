@@ -1,5 +1,6 @@
 #include "cv.h"
 #include "highgui.h"
+#include "calibration.c"
 
 void generate_movement_frame(IplImage *debug_frame, const IplImage *prev_frame, const IplImage *frame);
 
@@ -20,36 +21,43 @@ int main(int argc, char **argv) {
     exit(EXIT_FAILURE);
   }
 
-  cvNamedWindow("Dabby Bird", 1);
-  cvNamedWindow("Edge", 1);
-  cvNamedWindow("Moving Edge", 1);
+  cvNamedWindow("Calibrate", 1);
+  calibration_t *cali = (calibration_t *) malloc(sizeof(calibration_t));
+  calibrate(capture, cali);
 
-  while (cvWaitKey(10) != 'q') {
-    frame = cvQueryFrame(capture);
-    cvShowImage("Dabby Bird", frame);
+  // cvNamedWindow("Dabby Bird", 1);
+  // cvNamedWindow("Edge", 1);
+  // cvNamedWindow("Moving Edge", 1);
+  //
+  // while (cvWaitKey(10) != 'q') {
+  //   frame = cvQueryFrame(capture);
+  //   cvShowImage("Dabby Bird", frame);
+  //
+  //   if (frame) {
+  //     if (prev_frame) {
+  //       prev_frame = cvCloneImage(edge);
+  //       cvCvtColor(frame, grey_frame, CV_BGR2GRAY);
+  //       cvCanny(grey_frame, edge, 200.0, 200.0, 3);
+  //       if (prev_frame && edge) {
+  //         generate_movement_frame(debug_frame, edge, prev_edge);
+  //         cvShowImage("Moving Edge", debug_frame);
+  //         cvShowImage("Edge", edge);
+  //       }
+  //     } else {
+  //       debug_frame = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
+  //       grey_frame = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
+  //       edge = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
+  //       prev_edge = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
+  //     }
+  //     prev_frame = cvCloneImage(frame);
+  //   }
+  // }
+  // cvDestroyWindow("Dabby Bird");
+  // cvDestroyWindow("Edge");
+  // cvDestroyWindow("Moving Edge");
+  // cvReleaseCapture(&capture);
 
-    if (frame) {
-      if (prev_frame) {
-        prev_frame = cvCloneImage(edge);
-        cvCvtColor(frame, grey_frame, CV_BGR2GRAY);
-        cvCanny(grey_frame, edge, 200.0, 200.0, 3);
-        if (prev_frame && edge) {
-          generate_movement_frame(debug_frame, edge, prev_edge);
-          cvShowImage("Moving Edge", debug_frame);
-          cvShowImage("Edge", edge);
-        }
-      } else {
-        debug_frame = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
-        grey_frame = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
-        edge = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
-        prev_edge = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
-      }
-      prev_frame = cvCloneImage(frame);
-    }
-  }
-  cvDestroyWindow("Dabby Bird");
-  cvDestroyWindow("Edge");
-  cvDestroyWindow("Moving Edge");
+  free(cali);
   cvReleaseCapture(&capture);
 
   return EXIT_SUCCESS;
