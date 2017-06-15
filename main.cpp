@@ -5,6 +5,7 @@
 #include "detection.c"
 #include "median_blur.c"
 #include "flap.c"
+#include "test.c"
 
 void generate_movement_frame(IplImage *debug_frame, const IplImage *prev_frame, const IplImage *frame);
 
@@ -37,6 +38,9 @@ int main(int argc, char **argv) {
   cvNamedWindow("Dabby Bird", 1);
   cvNamedWindow("Arm Detection", 1);
 
+  object_list_t *objects = init_game();
+
+
   while (cvWaitKey(10) != 'q') {
     frame = cvQueryFrame(capture);
 
@@ -50,7 +54,31 @@ int main(int argc, char **argv) {
         cvCircle(frame, cvPoint(40,10), 10, c->upper, 15);
         cvCvtColor(frame, frame, CV_HSV2BGR);
         detect_hands(arm, hands);
-        detect_flap(frame, hands, &is_down);
+
+        int half_y = frame->height / 2;
+        if (is_down && hands->left_y < half_y) {
+          is_down = false;
+        } else if (!is_down && hands->left_y > half_y) {
+          is_down = true;
+          for_all(objects, flap);
+          cvCircle(frame, cvPoint(0, 200), 10, red, 40);
+        }
+
+
+        render_game(objects);
+        char c = 0;
+
+        c = getch();
+        //printf("\n%c\n", c);
+        if (c == ' ') {
+          for_all(objects, flap);
+        }
+
+        if (get_bird(objects)->point.y > HEIGHT - 10) {
+          if (get_bird(objects)->velocity.y >= 0) {
+            for_all(objects, flap);
+          }
+        }
 
         cvCircle(frame, cvPoint(hands->left_x, hands->left_y), 10, red, 15);
         cvCircle(frame, cvPoint(hands->right_x, hands->right_y), 10, red, 15);
@@ -65,6 +93,11 @@ int main(int argc, char **argv) {
       cvShowImage("Dabby Bird", frame);
     }
   }
+
+  sleep(5);
+  endwin();
+  printf("\nYou died!!!!\n");
+  for_all(objects, print_object);
 
   cvDestroyWindow("Dabby Bird");
   cvDestroyWindow("Arm Detection");
