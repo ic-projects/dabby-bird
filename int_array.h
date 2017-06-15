@@ -10,5 +10,6 @@ typedef struct {
 
 uint32_t max(int_array_t *data);
 uint32_t avg(int_array_t *data);
+int_array_t *init_arr(int size);
 
 #endif

@@ -1,6 +1,6 @@
 
 #include <stdio.h>
-#define BLUR_RADIUS 5
+#define BLUR_RADIUS 2
 
 void swap(unsigned char *array_list, int i, int j) {
   unsigned char temp = array_list[i];
@@ -47,7 +47,11 @@ unsigned char upper_quartile(unsigned char* array_list, int num_elements) {
   return array_list[3 * (num_elements - 1) / 4];
 }
 
-IplImage *median_blur(IplImage *frame) {
+CvSize get_blurred_size(CvSize oldsize) {
+ return cvSize(oldsize.width / BLUR_RADIUS , oldsize.height / BLUR_RADIUS);
+}
+
+void median_blur(IplImage *frame , IplImage *result) {
   if (frame->nChannels != 1) {
     fprintf(stderr, "median_blur was called with %d channels, but only supports"
                     " 1 channel.\n", frame->nChannels);
@@ -58,16 +62,16 @@ IplImage *median_blur(IplImage *frame) {
   int num_elements = num_offsets * num_offsets;
   unsigned char array_list[num_elements];
 
-  for (int y = BLUR_RADIUS; y < frame->height - BLUR_RADIUS; y++) {
-    for (int x = BLUR_RADIUS; x < frame->width - BLUR_RADIUS; x++) {
+  for (int y = 0; y < result->height; y++) {
+    for (int x = 0; x < result->width; x++) {
       for (int yo = 0; yo <= num_offsets; yo++) {
         for (int xo = 0; xo <= num_offsets; xo++) {
           array_list[num_offsets * yo + xo]
-            = frame->imageData[(y + yo - BLUR_RADIUS) * frame->widthStep
-                               + x + xo - BLUR_RADIUS]
+            = frame->imageData[(y*BLUR_RADIUS + yo - BLUR_RADIUS) * frame->widthStep
+                               + x*BLUR_RADIUS + xo - BLUR_RADIUS];
         }
       }
-      frame->imageData[y * frame->widthStep + x]
+      result->imageData[(y * result->widthStep + x)]
         = median(array_list, num_elements);
     }
   }
