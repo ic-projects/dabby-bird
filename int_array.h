@@ -1,3 +1,5 @@
+#ifndef INT_ARRAY_H
+#define INT_ARRAY_H
 #include <stdlib.h>
 #include <stdint.h>
 
@@ -8,3 +10,5 @@ typedef struct {
 
 uint32_t max(int_array_t *data);
 uint32_t avg(int_array_t *data);
+
+#endif
