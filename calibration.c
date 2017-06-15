@@ -7,6 +7,8 @@ typedef struct {
   int s_min;
   int v_max;
   int v_min;
+  bool done;
+  //list_t data;
 } calibration_t;
 
 bool in_box(int x, int y, int box_x, int box_y, int width) {
@@ -28,20 +30,40 @@ void overlay_frame(IplImage *frame) {
   }
 }
 
+void calibrate_frame(IplImage *frame, calibration_t *calibration) {
+  // ADD TO LIST
+  // REMOVE ELEMENT OVER 64
+  // IF LIST IS FULL
+  //  CALCULATE AVERAGE
+  //  IF NEWEST DIFF TO AVERAGE
+}
+
+void generic_calibration(calibration_t *c) {
+  c->h_max = 0;
+  c->h_min = 18;
+  c->s_max = 10;
+  c->s_min = 150;
+  c->v_max = 60;
+  c->v_min = 255;
+  c->done = true;
+}
+
 void calibrate(CvCapture *capture, calibration_t *calibration) {
   IplImage *frame = 0;
-  bool done = false;
+  calibration->done = false;
 
-  while (cvWaitKey(10) != 'q' || done) {
+  while (cvWaitKey(10) != 'q' || calibration->done) {
     frame = cvQueryFrame(capture);
 
     if (frame) {
       overlay_frame(frame);
       cvCvtColor(frame, frame, CV_BGR2HSV);
+      calibrate_frame(frame, calibration);
       cvCvtColor(frame, frame, CV_HSV2BGR);
       cvShowImage("Calibrate", frame);
     }
   }
 
   cvDestroyWindow("Calibrate");
+  generic_calibration(calibration);
 }
