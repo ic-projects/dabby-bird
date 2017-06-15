@@ -1,7 +1,6 @@
 //#include "int_array.h"
 #include <math.h>
 
-
 typedef struct {
   unsigned char *array;
   double standard_dev;
@@ -38,11 +37,11 @@ void standard_dev(int_array_t *data) {
 }
 
 unsigned char lower(int_array_t *data, double dev) {
-  return avg(data) - dev*data->standard_dev;
+  return avg(data) - (dev * data->standard_dev);
 }
 
 unsigned char upper(int_array_t *data, double dev) {
-  return avg(data) + dev*data->standard_dev;
+  return avg(data) + (dev * data->standard_dev);
 }
 
 int_array_t *init_arr(int size) {

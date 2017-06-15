@@ -4,6 +4,7 @@
 #include "threshold.c"
 #include "detection.c"
 #include "median_blur.c"
+#include "flap.c"
 
 void generate_movement_frame(IplImage *debug_frame, const IplImage *prev_frame, const IplImage *frame);
 
@@ -17,6 +18,7 @@ int main(int argc, char **argv) {
   hands_t *hands = init_hands();
   CvScalar red = cvScalar(255, 0, 0);
   capture = cvCaptureFromCAM(0);
+  bool is_down = false;
 
   if(!capture) {
     perror("Error when reading steam");
@@ -29,7 +31,7 @@ int main(int argc, char **argv) {
 
   calibration_t *c = (calibration_t *) malloc(sizeof(calibration_t));
   calibrate(capture, c);
-  //generic_calibration(c);
+  // generic_calibration(c);
 
 
   cvNamedWindow("Dabby Bird", 1);
@@ -38,21 +40,20 @@ int main(int argc, char **argv) {
   while (cvWaitKey(10) != 'q') {
     frame = cvQueryFrame(capture);
 
-
     if (frame) {
       if (prev_frame) {
         prev_frame = cvCloneImage(frame);
-
 
         cvCvtColor(frame, frame, CV_BGR2HSV);
         arm = get_arm(frame, c);
         cvCircle(frame, cvPoint(10,10), 10, c->lower, 15);
         cvCircle(frame, cvPoint(40,10), 10, c->upper, 15);
         cvCvtColor(frame, frame, CV_HSV2BGR);
-        //median_blur(arm, blurred_arm);
         detect_hands(arm, hands);
-        cvCircle(frame, cvPoint(hands->left_x,hands->left_y), 10, red, 15);
-        cvCircle(frame, cvPoint(hands->right_x,hands->right_y), 10, red, 15);
+        detect_flap(frame, hands, &is_down);
+
+        cvCircle(frame, cvPoint(hands->left_x, hands->left_y), 10, red, 15);
+        cvCircle(frame, cvPoint(hands->right_x, hands->right_y), 10, red, 15);
 
         cvShowImage("Arm Detection", arm);
       } else {
@@ -60,15 +61,16 @@ int main(int argc, char **argv) {
         blurred_arm = cvCreateImage(get_blurred_size(cvGetSize(frame)), IPL_DEPTH_8U, 1);
       }
       prev_frame = cvCloneImage(frame);
-      cvFlip(frame,frame, 1);
+      cvFlip(frame, frame, 1);
       cvShowImage("Dabby Bird", frame);
     }
   }
+
   cvDestroyWindow("Dabby Bird");
   cvDestroyWindow("Arm Detection");
   cvReleaseCapture(&capture);
 
-  // free(cali);
+  // free(c);
   // cvReleaseCapture(&capture);
 
   return EXIT_SUCCESS;

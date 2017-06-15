@@ -32,17 +32,17 @@ void quick_sort(unsigned char *array_list, int left, int right) {
   }
 }
 
-unsigned char lower_quartile(unsigned char* array_list, int num_elements) {
+unsigned char lower_quartile(unsigned char *array_list, int num_elements) {
   quick_sort(array_list, 0, num_elements - 1);
   return array_list[(num_elements - 1) / 4];
 }
 
-unsigned char median(unsigned char* array_list, int num_elements) {
+unsigned char median(unsigned char *array_list, int num_elements) {
   quick_sort(array_list, 0, num_elements - 1);
   return array_list[(num_elements - 1) / 2];
 }
 
-unsigned char upper_quartile(unsigned char* array_list, int num_elements) {
+unsigned char upper_quartile(unsigned char *array_list, int num_elements) {
   quick_sort(array_list, 0, num_elements - 1);
   return array_list[3 * (num_elements - 1) / 4];
 }
@@ -53,8 +53,7 @@ CvSize get_blurred_size(CvSize oldsize) {
 
 void median_blur(IplImage *frame , IplImage *result) {
   if (frame->nChannels != 1) {
-    fprintf(stderr, "median_blur was called with %d channels, but only supports"
-                    " 1 channel.\n", frame->nChannels);
+    fprintf(stderr, "median_blur was called with %d channels, but only supports 1 channel.\n", frame->nChannels);
     exit(EXIT_FAILURE);
   }
 
@@ -67,8 +66,8 @@ void median_blur(IplImage *frame , IplImage *result) {
       for (int yo = 0; yo <= num_offsets; yo++) {
         for (int xo = 0; xo <= num_offsets; xo++) {
           array_list[num_offsets * yo + xo]
-            = frame->imageData[(y*BLUR_RADIUS + yo - BLUR_RADIUS) * frame->widthStep
-                               + x*BLUR_RADIUS + xo - BLUR_RADIUS];
+            = frame->imageData[(y * BLUR_RADIUS + yo - BLUR_RADIUS) * frame->widthStep +
+                                x * BLUR_RADIUS + xo - BLUR_RADIUS];
         }
       }
       result->imageData[(y * result->widthStep + x)]
