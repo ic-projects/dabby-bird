@@ -1,4 +1,5 @@
 #include <math.h>
+#include <unistd.h>
 #include "cv.h"
 #include "highgui.h"
 #include "uchar_array.c"

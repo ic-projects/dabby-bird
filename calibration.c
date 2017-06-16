@@ -1,15 +1,37 @@
+/**
+ * @brief A struct to hold the HSV values of the calibrated skin colour.
+ */
 typedef struct {
+  /** The maximum Hue to match. */
   unsigned char h_max;
+  /** The minimum Hue to match. */
   unsigned char h_min;
+  /** The maximum Saturation to match. */
   unsigned char s_max;
+  /** The minimum Saturation to match. */
   unsigned char s_min;
+  /** The maximum Value to match. */
   unsigned char v_max;
+  /** The minimum Value to match. */
   unsigned char v_min;
+  /** True iff calibration has been done. */
   bool done;
+  /** Vector of the max HSV values so they can be rendered. */
   CvScalar upper;
+  /** Vector of the min HSV values so they can be rendered. */
   CvScalar lower;
 } calibration_t;
 
+/**
+ * @brief Given a coordinate and a box, determines whether it is in the box.
+ * @param x The x coordinate.
+ * @param y The y coordinate.
+ * @param box_x The x coordinate of the centre of box.
+ * @param box_y The y coordinate of the centre of box.
+ * @param width The distance from centre of the box to left or right edge.
+ * @param height The distance from centre of the box to top or bottom edge.
+ * @returns True iff the coordinate is in the box.
+ */
 bool in_box(int x, int y, int box_x, int box_y, int width, int height) {
   return (x > box_x - width
     && x < box_x + width
@@ -17,6 +39,16 @@ bool in_box(int x, int y, int box_x, int box_y, int width, int height) {
     && y < box_y + height);
 }
 
+/**
+ * @brief Given a frame, applies a darkened border around it.
+ * User will place their hand inside the undarkened centre box to calibrate
+ * their skin colour.
+ * @param frame The IplImage frame.
+ * @param reg_x The centre box x coordinate.
+ * @param reg_y The centre box y coordinate.
+ * @param reg_height The centre box height.
+ * @param reg_width The centre box width.
+ */
 void overlay_frame(IplImage *frame, int reg_x, int reg_y, int reg_height, int reg_width) {
   for (int y = 0; y < frame->height; y++) {
     for (int x = 0; x < frame->width; x++) {
@@ -29,6 +61,15 @@ void overlay_frame(IplImage *frame, int reg_x, int reg_y, int reg_height, int re
   }
 }
 
+/**
+ * @brief Calibrates according to the skin colour in centre box in the frame.
+ * @param frame The IplImage frame.
+ * @param c The calibration struct to place the skin colour values in.
+ * @param reg_x The centre box x coordinate.
+ * @param reg_y The centre box y coordinate.
+ * @param reg_height The centre box height.
+ * @param reg_width The centre box width.
+ */
 void final_calibration(IplImage *frame, calibration_t *c, int reg_x, int reg_y, int reg_height, int reg_width) {
   int size = 0;
   for (int y = reg_y - reg_height; y < reg_y + reg_height; y++) {
@@ -37,9 +78,9 @@ void final_calibration(IplImage *frame, calibration_t *c, int reg_x, int reg_y, 
     }
   }
 
-  int_array_t *h_arr = init_arr(size);
-  int_array_t *s_arr = init_arr(size);
-  int_array_t *v_arr = init_arr(size);
+  uchar_array_t *h_arr = init_arr(size);
+  uchar_array_t *s_arr = init_arr(size);
+  uchar_array_t *v_arr = init_arr(size);
   int i = 0;
 
   for (int y = reg_y - reg_height; y < reg_y + reg_height; y++) {
@@ -78,6 +119,10 @@ void final_calibration(IplImage *frame, calibration_t *c, int reg_x, int reg_y, 
   printf("v_min: %f\n", (float) (c->v_min));
 }
 
+/**
+ * @brief Calibrates according to a generic skin colour.
+ * @param c The calibration struct to place the skin colour values in.
+ */
 void generic_calibration(calibration_t *c) {
   c->h_max = 25;
   c->h_min = 0;
@@ -88,6 +133,11 @@ void generic_calibration(calibration_t *c) {
   c->done = true;
 }
 
+/**
+ * @brief Displays a calibration window for the user to calibrate their skin.
+ * @param capture The CvCapture video stream.
+ * @param calibration The calibration struct to place the skin colour values in.
+ */
 void calibrate(CvCapture *capture, calibration_t *calibration) {
   IplImage *frame = 0;
   calibration->done = false;
