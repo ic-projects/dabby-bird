@@ -19,7 +19,6 @@ typedef enum {
   W,
 } dir_t;
 
-void print_game(object_list_t *list);
 int snake_hit(object_list_t *list);
 object_list_t *init_game(void);
 void move_snake(object_list_t *list, vector_t dir);

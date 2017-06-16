@@ -3,6 +3,7 @@
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <ncurses.h>
 #include "ascii_art.h"
 
 typedef enum {
@@ -52,5 +53,6 @@ int get_color(object_list_t *list, vector_t point);
 object_list_elem_t *get_head(object_list_t *list);
 object_list_elem_t *get_tail(object_list_t *list);
 object_list_elem_t *get_apple(object_list_t *list);
+void print_game(object_list_t *list, int width, int height);
 
 #endif

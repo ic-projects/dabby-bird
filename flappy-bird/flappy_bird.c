@@ -27,21 +27,6 @@ void flap(object_list_elem_t *elem) {
   }
 }
 
-void print_game(object_list_t *list) {
-  for (int i = 0; i < HEIGHT; i++) {
-    for (int j = 0; j < WIDTH; j++) {
-      vector_t point = {j, i};
-      int color = get_color(list, point);
-      char c = get_char_list(list, point);
-      if (c == ' ') {
-        color*=2;
-      }
-      attron(COLOR_PAIR(color));
-      addch(c);
-    }
-    printw("\n");
-  }
-}
 
 int bird_coll(object_list_t *list) {
   object_list_elem_t *bird = get_bird(list);
@@ -143,6 +128,6 @@ void render_game(object_list_t *list) {
   clear();
   for_all(list, move_object);
   for_all(list, move_pipes);
-  print_game(list);
+  print_game(list, WIDTH, HEIGHT);
   refresh();
 }

@@ -24,21 +24,6 @@ object_list_t *new_list(void) {
   return list;
 }
 
-/*
-void remove_elem(object_list_t *list, uint16_t id) {
-  for (int i = 0; i < list->size; i++) {
-    if (list->array[i]->id == id) {
-      for (int j = i; j < list->size - 1; j++) {
-        list[j] = list[j + 1];
-      }
-      list->size--;
-      return;
-    }
-  }
-  fprintf(stderr, "Id not in list to remove");
-}
-*/
-
 void add_elem(object_list_t *list, object_list_elem_t *elem) {
   list->array[list->size] = elem;
   list->size++;
@@ -136,4 +121,20 @@ int get_color(object_list_t *list, vector_t point) {
     }
   }
   return 1;
+}
+
+void print_game(object_list_t *list, int width, int height) {
+  for (int i = 0; i < height; i++) {
+    for (int j = 0; j < width; j++) {
+      vector_t point = {j, i};
+      int color = get_color(list, point);
+      char c = get_char_list(list, point);
+      if (c == ' ') {
+        color*=2;
+      }
+      attron(COLOR_PAIR(color));
+      addch(c);
+    }
+    printw("\n");
+  }
 }

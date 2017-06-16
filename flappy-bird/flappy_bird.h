@@ -14,7 +14,6 @@
 
 void move_pipes(object_list_elem_t *elem);
 void flap(object_list_elem_t *elem);
-void print_game(object_list_t *list);
 int bird_coll(object_list_t *list);
 object_list_t *init_game(void);
 void render_game(object_list_t *list);

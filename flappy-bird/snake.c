@@ -116,6 +116,7 @@ void hit_apple(object_list_t *list) {
     ntail->depth = 0;
     ntail->prev = tail;
     add_elem(list, ntail);
+
     apple->point.y = rand() % HEIGHT;
     apple->point.x = rand() % WIDTH;
   }
@@ -126,7 +127,7 @@ void render_game(object_list_t *list, vector_t dir) {
   clear();
   move_snake(list, dir);
   hit_apple(list);
-  print_game(list);
+  print_game(list, WIDTH, HEIGHT);
   refresh();
 }
 
@@ -140,20 +141,4 @@ int snake_hit(object_list_t *list) {
     }
   }
   return 0;
-}
-
-void print_game(object_list_t *list) {
-  for (int i = 0; i < HEIGHT; i++) {
-    for (int j = 0; j < WIDTH; j++) {
-      vector_t point = {j, i};
-      int color = get_color(list, point);
-      char c = get_char_list(list, point);
-      if (c == ' ') {
-        color*=2;
-      }
-      attron(COLOR_PAIR(color));
-      addch(c);
-    }
-    printw("\n");
-  }
 }
