@@ -34,12 +34,12 @@ int bird_coll(object_list_t *list) {
     if (list->array[i]->type == pipes) {
       vector_t test_point;
       if (is_covering(list->array[i], bird_elem->point)) {
-        test_point = (vector_t){.x = 0, .y = bird_elem->point.y - list->array[i]->point.y};
+        test_point = (vector_t) {.x = 0, .y = bird_elem->point.y - list->array[i]->point.y};
         return get_char_ascii(list->array[i]->ascii, test_point) != ' ';
       }
-      test_point = (vector_t){.x = bird_elem->point.x, .y = bird_elem->point.y + bird_elem->ascii->width};
+      test_point = (vector_t) {.x = bird_elem->point.x, .y = bird_elem->point.y + bird_elem->ascii->width};
       if (is_covering(list->array[i], test_point)) {
-        test_point = (vector_t){.x = 0, .y = bird_elem->point.y + bird_elem->ascii->width - list->array[i]->point.y};
+        test_point = (vector_t) {.x = 0, .y = bird_elem->point.y + bird_elem->ascii->width - list->array[i]->point.y};
         return get_char_ascii(list->array[i]->ascii, test_point) != ' ';
       }
     }
@@ -54,8 +54,8 @@ object_list_t *init_game(void) {
   vector_t zero = {0, 0};
 
   object_list_elem_t *elem2 = malloc(sizeof(object_list_elem_t));
-  elem2->point = (vector_t){.x = 0, .y = (HEIGHT - 2)};
-  elem2->velocity = (vector_t){.x = -1};
+  elem2->point = (vector_t) {.x = 0, .y = (HEIGHT - 2)};
+  elem2->velocity = (vector_t) {.x = -1};
   elem2->acceleration = zero;
   elem2->ascii = malloc(sizeof(ascii_t));
   elem2->ascii->height = 2;
@@ -67,9 +67,9 @@ object_list_t *init_game(void) {
   add_elem(objects, elem2);
 
   object_list_elem_t *elem1 = malloc(sizeof(object_list_elem_t));
-  elem1->point = (vector_t){.x = 10, .y = HEIGHT/2};
+  elem1->point = (vector_t) {.x = 10, .y = HEIGHT/2};
   elem1->velocity = zero;
-  elem1->acceleration = (vector_t){.y = 1};
+  elem1->acceleration = (vector_t) {.y = 1};
   elem1->ascii = malloc(sizeof(ascii_t));
   elem1->ascii->height = 2;
   elem1->ascii->width = 4;
@@ -80,12 +80,12 @@ object_list_t *init_game(void) {
   add_elem(objects, elem1);
 
   object_list_elem_t *elem = malloc(sizeof(object_list_elem_t));
-  elem->velocity = (vector_t){.x = -5};
+  elem->velocity = (vector_t) {.x = -5};
   elem->acceleration = zero;
   elem->ascii = malloc(sizeof(ascii_t));
   elem->ascii->height = 155;
   elem->ascii->width = 3;
-  elem->point = (vector_t){.x = WIDTH - 10, .y =  -(rand() % HEIGHT/2) + HEIGHT/4 + (HEIGHT/2 - (elem->ascii->height / 2))};
+  elem->point = (vector_t) {.x = WIDTH - 10, .y =  -(rand() % HEIGHT/2) + HEIGHT/4 + (HEIGHT/2 - (elem->ascii->height / 2))};
   elem->ascii->ascii = pipe_ascii;
   elem->ascii->color = 1;
   elem->type = pipes;
@@ -93,12 +93,12 @@ object_list_t *init_game(void) {
   add_elem(objects, elem);
 
   object_list_elem_t *elem4 = malloc(sizeof(object_list_elem_t));
-  elem4->velocity = (vector_t){.x = -5};
+  elem4->velocity = (vector_t) {.x = -5};
   elem4->acceleration = zero;
   elem4->ascii = malloc(sizeof(ascii_t));
   elem4->ascii->height = 155;
   elem4->ascii->width = 3;
-  elem4->point = (vector_t){.x = WIDTH * 1.5 - 10, .y =  -(rand() % HEIGHT/2) + HEIGHT/4 + (HEIGHT/2 - (elem->ascii->height / 2))};
+  elem4->point = (vector_t) {.x = WIDTH * 1.5 - 10, .y =  -(rand() % HEIGHT/2) + HEIGHT/4 + (HEIGHT/2 - (elem->ascii->height / 2))};
   elem4->ascii->ascii = pipe_ascii;
   elem4->ascii->color = 1;
   elem4->type = pipes;

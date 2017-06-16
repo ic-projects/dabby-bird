@@ -10,16 +10,16 @@ int main(int argc, char **argv) {
     c = getch();
     //printf("\n%c\n", c);
     if (c == 'W' || c == 'w') {
-      snake_dir = (vector_t){.x = 0, .y = -1};
+      snake_dir = (vector_t) {.x = 0, .y = -1};
     }
     if (c == 'A' || c == 'a') {
-      snake_dir = (vector_t){.x = -1, .y = 0};
+      snake_dir = (vector_t) {.x = -1, .y = 0};
     }
     if (c == 'S' || c == 's') {
-      snake_dir = (vector_t){.x = 0, .y = 1};
+      snake_dir = (vector_t) {.x = 0, .y = 1};
     }
     if (c == 'D' || c == 'd') {
-      snake_dir = (vector_t){.x = 1, .y = 0};
+      snake_dir = (vector_t) {.x = 1, .y = 0};
     }
 //    for_all(objects, print_object);
 

@@ -11,7 +11,7 @@ IplImage *get_arm(IplImage *frame, calibration_t *c) {
 
   for (int y = 0; y < frame->height; y++) {
     for (int x = 0; x < frame->width; x++) {
-      if (in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels], c->h_min, c->h_max , 180) &&
+      if (in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels], c->h_min, c->h_max, 180) &&
           in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels + 1], c->s_min, c->s_max, 255) &&
           in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels + 2], c->v_min, c->v_max, 255)) {
         result->imageData[y * result->widthStep + x] = 255;

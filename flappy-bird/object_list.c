@@ -1,6 +1,6 @@
 #include "object_list.h"
 
-int compare_list_elem( const void* a, const void* b) {
+int compare_list_elem(const void *a, const void *b) {
   object_list_elem_t *object_a = (object_list_elem_t*) a;
   object_list_elem_t *object_b = (object_list_elem_t*) b ;
 
@@ -86,7 +86,7 @@ void print_object(object_list_elem_t *elem) {
   printf("Depth: %d\n", elem->depth);
   printf("Position: (%d, %d)\n", elem->point.x, elem->point.y);
   //printf("Velocity: (%d, %d)\n", elem->velocity.x, elem->velocity.y);
-  printf("Char at 0, 0: %c\n", get_char_ascii(elem->ascii, (vector_t){0, 0}));
+  printf("Char at 0, 0: %c\n", get_char_ascii(elem->ascii, (vector_t) {0, 0}));
 }
 
 object_list_elem_t *get_elem(object_list_t *list, type_t type) {

@@ -121,5 +121,4 @@ void calibrate(CvCapture *capture, calibration_t *calibration) {
   final_calibration(frame, calibration, reg_x, reg_y, reg_height, reg_width);
   cvCvtColor(frame, frame, CV_HSV2BGR);
   cvDestroyWindow("Calibrate");
-  // cvReleaseImage(&frame);
 }

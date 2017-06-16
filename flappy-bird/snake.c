@@ -11,7 +11,7 @@ object_list_t *init_game(void) {
   vector_t zero = {0, 0};
 
   object_list_elem_t *head = malloc(sizeof(object_list_elem_t));
-  head->point = (vector_t){.x = WIDTH/2, .y = HEIGHT/2};
+  head->point = (vector_t) {.x = WIDTH/2, .y = HEIGHT/2};
   head->velocity = zero;
   head->acceleration = zero;
   head->ascii = malloc(sizeof(ascii_t));
@@ -25,8 +25,8 @@ object_list_t *init_game(void) {
 
 
   object_list_elem_t *body = malloc(sizeof(object_list_elem_t));
-  body->point = (vector_t){.x = WIDTH/2 + 1, .y = HEIGHT/2};
-  body->velocity = (vector_t){.x = -1};
+  body->point = (vector_t) {.x = WIDTH/2 + 1, .y = HEIGHT/2};
+  body->velocity = (vector_t) {.x = -1};
   body->acceleration = zero;
   body->ascii = malloc(sizeof(ascii_t));
   body->ascii->height = 1;
@@ -39,7 +39,7 @@ object_list_t *init_game(void) {
   add_elem(objects, body);
 
   object_list_elem_t *tail = malloc(sizeof(object_list_elem_t));
-  tail->point = (vector_t){.x = WIDTH/2 + 2, .y = HEIGHT/2};
+  tail->point = (vector_t) {.x = WIDTH/2 + 2, .y = HEIGHT/2};
   tail->velocity = zero;
   tail->acceleration = zero;
   tail->ascii = malloc(sizeof(ascii_t));
@@ -54,7 +54,7 @@ object_list_t *init_game(void) {
 
 
   object_list_elem_t *apple = malloc(sizeof(object_list_elem_t));
-  apple->point = (vector_t){.x = rand() % WIDTH , .y = rand() % HEIGHT};
+  apple->point = (vector_t) {.x = rand() % WIDTH, .y = rand() % HEIGHT};
   apple->velocity = zero;
   apple->acceleration = zero;
   apple->ascii = malloc(sizeof(ascii_t));
@@ -87,7 +87,7 @@ void move_snake(object_list_t *list, vector_t dir) {
   for (; snake->type != snake_head; snake = snake->prev) {
     snake->point = snake->prev->point;
   }
-  snake->point = (vector_t){.x = snake->point.x + dir.x, .y = snake->point.y + dir.y};
+  snake->point = (vector_t) {.x = snake->point.x + dir.x, .y = snake->point.y + dir.y};
   snake->point.x %= WIDTH;
   snake->point.y %= HEIGHT;
   if (snake->point.x < 0) {

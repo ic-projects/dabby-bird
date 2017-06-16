@@ -54,6 +54,9 @@ bool outside_range(int x, int y, int rx, int ry, int rwidth, int rheight) {
 }
 
 // takes the frame and the last hands pos and updates hands to be the new pos of hands
+/**
+ * 
+ */
 void detect_hands(IplImage *frame, hands_t *hands) {
   if (hands == NULL || hands->is_null) {
     hands->left_x = 2 * frame->width / 7;
@@ -68,13 +71,13 @@ void detect_hands(IplImage *frame, hands_t *hands) {
     hands->left_y = frame->height / 2;
   }
 
-  if (outside_range(hands->right_x, hands->right_y, frame->width * 0.7 , frame->height * 0.1, frame->width * 0.3, frame->height * 0.8)) {
+  if (outside_range(hands->right_x, hands->right_y, frame->width * 0.7, frame->height * 0.1, frame->width * 0.3, frame->height * 0.8)) {
     hands->right_x = 5 * frame->width / 7;
     hands->right_y = frame->height / 2;
   }
 
-  int ITERATIONS = 10;
-  for (int i = 0; i < ITERATIONS; i++) {
-    apply_force(frame, hands, 0.000005 * (ITERATIONS - i) / ITERATIONS);
+  int iterations = 10;
+  for (int i = 0; i < iterations; i++) {
+    apply_force(frame, hands, 0.000005 * (iterations - i) / iterations);
   }
 }

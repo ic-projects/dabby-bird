@@ -21,7 +21,7 @@ int main(int argc, char **argv) {
   hands_t *hands = init_hands();
   bool is_down = false;
 
-  if(!capture) {
+  if (!capture) {
     perror("Error when reading stream");
     exit(EXIT_FAILURE);
   }
@@ -55,9 +55,6 @@ int main(int argc, char **argv) {
         } else if (!is_down && hands->left_y > half && hands->right_y > half) {
           is_down = true;
           for_all(objects, flap);
-
-          // Show that flap has happened
-          cvCircle(frame, cvPoint(0, 200), 10, red, 40);
         }
 
         render_game(objects);
