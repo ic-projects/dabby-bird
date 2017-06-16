@@ -86,7 +86,7 @@ void test_add(void) {
   elem = malloc(sizeof(object_list_elem_t));
   add_elem(list, elem);
   assert(list->size == 22);
-//  free_object_list(list);
+  // free_object_list(list);
 }
 
 void test_get_elem(void) {

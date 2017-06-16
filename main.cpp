@@ -68,8 +68,8 @@ int main(int argc, char **argv) {
           for_all(objects, flap);
         }
 
-        if (get_bird(objects)->point.y > HEIGHT - 10) {
-          if (get_bird(objects)->velocity.y >= 0) {
+        if (get_elem(objects, bird)->point.y > HEIGHT - 10) {
+          if (get_elem(objects, bird)->velocity.y >= 0) {
             for_all(objects, flap);
           }
         }
