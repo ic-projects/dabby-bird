@@ -1,6 +1,3 @@
-// #include "calibration.h"
-#include "uchar_array.c"
-
 typedef struct {
   unsigned char h_max;
   unsigned char h_min;
@@ -94,11 +91,13 @@ void generic_calibration(calibration_t *c) {
 void calibrate(CvCapture *capture, calibration_t *calibration) {
   IplImage *frame = 0;
   calibration->done = false;
+
   int reg_x = 0;
   int reg_y = 0;
   int reg_height = 0;
   int reg_width = 0;
   int timer = 0;
+
   while ((cvWaitKey(10) != 'q' || calibration->done) && timer < 90) {
     frame = cvQueryFrame(capture);
 
@@ -121,7 +120,6 @@ void calibrate(CvCapture *capture, calibration_t *calibration) {
   printf("%i %i %i %i\n", reg_x, reg_y, reg_height, reg_width);
   final_calibration(frame, calibration, reg_x, reg_y, reg_height, reg_width);
   cvCvtColor(frame, frame, CV_HSV2BGR);
-
   cvDestroyWindow("Calibrate");
-  // generic_calibration(calibration);
+  // cvReleaseImage(&frame);
 }

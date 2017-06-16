@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8)
-project( dabby-bird )
+project( opencv-game-engine )
 find_package( OpenCV REQUIRED )
 find_package( Curses REQUIRED )
 add_executable( main main.cpp )

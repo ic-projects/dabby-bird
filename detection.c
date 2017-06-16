@@ -1,5 +1,3 @@
-#include <math.h>
-
 typedef struct {
   int left_x;
   int left_y;
@@ -33,7 +31,7 @@ void apply_force_point(IplImage *frame, int *px, int *py, double initial, double
 
   for (int y = *py - radius; y < *py + radius; y++) {
     for (int x = *px - radius; x < *px + radius; x++) {
-      if(x > 0 && x < frame->width && y > 0 && y < frame->height) {
+      if (x > 0 && x < frame->width && y > 0 && y < frame->height) {
         pixel_weight = (double) ((unsigned char) (frame->imageData[y * frame->widthStep + x])) * scale;
         dist_scale = (double) (20) / ((double) (20 + dist(x, y, *px, *py)));
         new_x += pixel_weight * dist_scale * (x - *px);
@@ -54,6 +52,7 @@ void apply_force(IplImage *frame, hands_t *h, double scale) {
 bool outside_range(int x, int y, int rx, int ry, int rwidth, int rheight) {
   return !(x > rx && x < rwidth + rx && y > ry && y < rheight + ry);
 }
+
 // takes the frame and the last hands pos and updates hands to be the new pos of hands
 void detect_hands(IplImage *frame, hands_t *hands) {
   if (hands == NULL || hands->is_null) {

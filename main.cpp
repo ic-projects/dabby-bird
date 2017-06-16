@@ -1,11 +1,11 @@
+#include <math.h>
 #include "cv.h"
 #include "highgui.h"
+#include "uchar_array.c"
 #include "calibration.c"
 #include "threshold.c"
 #include "detection.c"
-#include "median_blur.c"
-#include "flap.c"
-#include "test.c"
+#include "flappy_bird.c"
 
 void generate_movement_frame(IplImage *debug_frame, const IplImage *prev_frame, const IplImage *frame);
 
@@ -15,61 +15,55 @@ int main(int argc, char **argv) {
   IplImage *prev_frame = 0;
   IplImage *result = 0;
   IplImage *arm = 0;
-  IplImage *blurred_arm = 0;
-  hands_t *hands = init_hands();
   CvScalar red = cvScalar(255, 0, 0);
   capture = cvCaptureFromCAM(0);
+  object_list_t *objects = init_game();
+  hands_t *hands = init_hands();
   bool is_down = false;
 
   if(!capture) {
-    perror("Error when reading steam");
+    perror("Error when reading stream");
     exit(EXIT_FAILURE);
   }
 
-  // cvNamedWindow("Calibrate", 1);
-  // calibration_t *cali = (calibration_t *) malloc(sizeof(calibration_t));
-  // calibrate(capture, cali);
-
   calibration_t *c = (calibration_t *) malloc(sizeof(calibration_t));
   calibrate(capture, c);
-  // generic_calibration(c);
-
 
   cvNamedWindow("Dabby Bird", 1);
   cvNamedWindow("Arm Detection", 1);
-
-  object_list_t *objects = init_game();
-
 
   while (cvWaitKey(10) != 'q') {
     frame = cvQueryFrame(capture);
 
     if (frame) {
       if (prev_frame) {
+        cvReleaseImage(&prev_frame);
         prev_frame = cvCloneImage(frame);
 
         cvCvtColor(frame, frame, CV_BGR2HSV);
+        cvReleaseImage(&arm);
         arm = get_arm(frame, c);
         cvCircle(frame, cvPoint(10,10), 10, c->lower, 15);
         cvCircle(frame, cvPoint(40,10), 10, c->upper, 15);
         cvCvtColor(frame, frame, CV_HSV2BGR);
         detect_hands(arm, hands);
 
-        int half_y = frame->height / 2;
-        if (is_down && hands->left_y < half_y) {
+        int half = frame->height / 2;
+
+        if (is_down && hands->left_y < half && hands->right_y < half) {
           is_down = false;
-        } else if (!is_down && hands->left_y > half_y) {
+        } else if (!is_down && hands->left_y > half && hands->right_y > half) {
           is_down = true;
           for_all(objects, flap);
+
+          // Show that flap has happened
           cvCircle(frame, cvPoint(0, 200), 10, red, 40);
         }
-
 
         render_game(objects);
         char c = 0;
 
         c = getch();
-        //printf("\n%c\n", c);
         if (c == ' ') {
           for_all(objects, flap);
         }
@@ -82,12 +76,13 @@ int main(int argc, char **argv) {
 
         cvCircle(frame, cvPoint(hands->left_x, hands->left_y), 10, red, 15);
         cvCircle(frame, cvPoint(hands->right_x, hands->right_y), 10, red, 15);
-
         cvShowImage("Arm Detection", arm);
+
       } else {
         arm = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
-        blurred_arm = cvCreateImage(get_blurred_size(cvGetSize(frame)), IPL_DEPTH_8U, 1);
       }
+
+      cvReleaseImage(&prev_frame);
       prev_frame = cvCloneImage(frame);
       cvFlip(frame, frame, 1);
       cvShowImage("Dabby Bird", frame);
@@ -96,15 +91,20 @@ int main(int argc, char **argv) {
 
   sleep(5);
   endwin();
-  printf("\nYou died!!!!\n");
+  printf("\nYou died!\n");
   for_all(objects, print_object);
 
   cvDestroyWindow("Dabby Bird");
   cvDestroyWindow("Arm Detection");
   cvReleaseCapture(&capture);
+  cvReleaseImage(&frame);
+  cvReleaseImage(&prev_frame);
+  cvReleaseImage(&result);
+  cvReleaseImage(&arm);
 
-  // free(c);
-  // cvReleaseCapture(&capture);
+  free(objects);
+  free(hands);
+  free(c);
 
   return EXIT_SUCCESS;
 }

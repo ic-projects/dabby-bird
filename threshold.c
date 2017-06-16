@@ -1,8 +1,5 @@
-// #include "threshold.h"
-#include <math.h>
-
 bool in_range(unsigned char value, unsigned char min, unsigned char max, unsigned char range) {
-  if(max >= min) {
+  if (max >= min) {
     return value >= min && value <= max;
   } else {
     return value <= min && value >= 0 || value <= range && value >= max;
@@ -15,8 +12,8 @@ IplImage *get_arm(IplImage *frame, calibration_t *c) {
   for (int y = 0; y < frame->height; y++) {
     for (int x = 0; x < frame->width; x++) {
       if (in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels], c->h_min, c->h_max , 180) &&
-      in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels + 1], c->s_min, c->s_max , 255) &&
-      in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels + 2], c->v_min, c->v_max, 255)) {
+          in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels + 1], c->s_min, c->s_max, 255) &&
+          in_range((unsigned char) frame->imageData[y * frame->widthStep + x * frame->nChannels + 2], c->v_min, c->v_max, 255)) {
         result->imageData[y * result->widthStep + x] = 255;
       } else {
         result->imageData[y * result->widthStep + x] = 0;
