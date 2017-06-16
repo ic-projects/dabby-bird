@@ -19,5 +19,6 @@ int main(int argc, char **argv) {
   endwin();
   printf("\nYou died!!!!\n");
   for_all(objects, print_object);
+  free_object_list(objects);
   return EXIT_SUCCESS;
 }

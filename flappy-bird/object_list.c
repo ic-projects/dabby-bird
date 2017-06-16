@@ -19,12 +19,25 @@ object_list_t *new_list(void) {
     perror("Unable to allocate memory for new list");
     exit(EXIT_FAILURE);
   }
-  list->array = malloc(sizeof(object_list_elem_t) * 20);
+  list->array = malloc(sizeof(object_list_elem_t *) * INITIAL_OBJECT_LIST_SIZE);
+  if (!list->array) {
+    perror("Unable to allocate memory for new list");
+    exit(EXIT_FAILURE);
+  }
   list->size = 0;
+  list->max_size = INITIAL_OBJECT_LIST_SIZE;
   return list;
 }
 
 void add_elem(object_list_t *list, object_list_elem_t *elem) {
+  if (list->size >= list->max_size) {
+    list->max_size *= 2;
+    list->array = realloc(list->array, sizeof(object_list_elem_t *) * list->max_size);
+    if (!list->array) {
+      perror("Unable to reallocate memory for object list");
+      exit(EXIT_FAILURE);
+    }
+  }
   list->array[list->size] = elem;
   list->size++;
 //  qsort(list->array[0], list->size, sizeof(object_list_elem_t*), compare_list_elem);
@@ -72,7 +85,7 @@ void print_object(object_list_elem_t *elem) {
   printf("Has:\n");
   printf("Depth: %d\n", elem->depth);
   printf("Position: (%d, %d)\n", elem->point.x, elem->point.y);
-  printf("Velocity: (%d, %d)\n", elem->velocity.x, elem->velocity.y);
+  //printf("Velocity: (%d, %d)\n", elem->velocity.x, elem->velocity.y);
   printf("Char at 0, 0: %c\n", get_char_ascii(elem->ascii, (vector_t){0, 0}));
 }
 
@@ -137,4 +150,15 @@ void print_game(object_list_t *list, int width, int height) {
     }
     printw("\n");
   }
+}
+
+void free_object_list(object_list_t *list) {
+  for_all(list, free_object_list_elem);
+  free(list->array);
+  free(list);
+}
+
+void free_object_list_elem(object_list_elem_t *elem) {
+  free(elem->ascii);
+  free(elem);
 }

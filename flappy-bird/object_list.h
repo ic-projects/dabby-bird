@@ -6,6 +6,8 @@
 #include <ncurses.h>
 #include "ascii_art.h"
 
+#define INITIAL_OBJECT_LIST_SIZE 20
+
 typedef enum {
   bird,
   pipes,
@@ -35,6 +37,7 @@ typedef struct object_list_elem {
 typedef struct {
   object_list_elem_t **array;
   uint16_t size;
+  uint16_t max_size;
 } object_list_t;
 
 typedef void object_list_elem_function_t(object_list_elem_t *);
@@ -54,5 +57,7 @@ object_list_elem_t *get_head(object_list_t *list);
 object_list_elem_t *get_tail(object_list_t *list);
 object_list_elem_t *get_apple(object_list_t *list);
 void print_game(object_list_t *list, int width, int height);
+void free_object_list(object_list_t *list);
+void free_object_list_elem(object_list_elem_t *elem);
 
 #endif
