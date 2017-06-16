@@ -4,10 +4,17 @@
  */
 #include "snake.h"
 
+/** Snake char. */
 static char snake[1] = "&";
 
+/** Apple char. */
 static char char_apple[1] = "@";
 
+/**
+ * @brief Initailises a game state for a snake game.
+ *
+ * @returns An object list representing the initial game state.
+ */
 object_list_t *init_game(void) {
   srand(time(NULL));
 
@@ -86,6 +93,12 @@ object_list_t *init_game(void) {
   return objects;
 }
 
+/**
+ * @brief Moves the snake.
+ *
+ * @param list The object list.
+ * @param dir Direction for the snake head to go.
+ */
 void move_snake(object_list_t *list, vector_t dir) {
   object_list_elem_t *snake = get_elem(list, snake_tail);
   for (; snake->type != snake_head; snake = snake->prev) {
@@ -102,6 +115,12 @@ void move_snake(object_list_t *list, vector_t dir) {
   }
 }
 
+/**
+ * @brief Checks if apple is hit, creates new apple if it is.
+ *
+ * It also creates lengthens the snake if an apple is hit.
+ * @param list The object list.
+ */
 void hit_apple(object_list_t *list) {
   object_list_elem_t *head_elem = get_elem(list, snake_head);
   object_list_elem_t *apple = get_elem(list, snake_apple);
@@ -127,6 +146,12 @@ void hit_apple(object_list_t *list) {
 
 }
 
+/**
+ * @brief Renders the game, and updates the game state.
+ *
+ * @param list The object list.
+ * @param dir Direction for the snake head to go.
+ */
 void render_game(object_list_t *list, vector_t dir) {
   clear();
   move_snake(list, dir);
@@ -135,6 +160,11 @@ void render_game(object_list_t *list, vector_t dir) {
   refresh();
 }
 
+/**
+ * @brief Checks if the snake has hit itself
+ *
+ * @param list The object list.
+ */
 int snake_hit(object_list_t *list) {
   object_list_elem_t *head = get_elem(list, snake_head);
   for (int i = 0; i < list->size; i++) {

@@ -1,6 +1,6 @@
 /**
  * @file snake.h
- * @brief Header file for snake.c
+ * @brief Header file for snake.c.
  */
 #ifndef flappy_bird_h
 #define flappy_bird_h
@@ -13,7 +13,9 @@
 #include "object_list.h"
 #include <locale.h>
 
+/** Width of the game. */
 #define WIDTH 50
+/** Height of the game. */
 #define HEIGHT 50
 
 int snake_hit(object_list_t *list);

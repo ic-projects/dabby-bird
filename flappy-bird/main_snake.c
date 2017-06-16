@@ -1,10 +1,13 @@
 /**
- * @file ascii_art.h
+ * @file main_snake.c
  * @brief Main file for snake game.
  */
 #include "snake.h"
 
-int main(int argc, char **argv) {
+/**
+ * @brief Creates and plays the game.
+ */
+int main(void) {
   object_list_t *objects = init_game();
   vector_t snake_dir = {.x = -1, .y = 0};
   while (!snake_hit(objects)) {

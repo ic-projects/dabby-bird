@@ -4,19 +4,11 @@
  */
 #include "object_list.h"
 
-int compare_list_elem(const void *a, const void *b) {
-  object_list_elem_t *object_a = (object_list_elem_t*) a;
-  object_list_elem_t *object_b = (object_list_elem_t*) b ;
-
-  if (object_a->depth == object_b->depth) {
-    return 0;
-  } else if (object_a->depth < object_b->depth) {
-    return -1;
-  } else {
-    return 1;
-  }
-}
-
+/**
+ * @brief Returns an initialised object list.
+ *
+ * @returns Initialised object list.
+ */
 object_list_t *new_list(void) {
   object_list_t *list = malloc(sizeof(object_list_t));
   if (!list) {
@@ -33,6 +25,12 @@ object_list_t *new_list(void) {
   return list;
 }
 
+/**
+ * @brief Adds a element to an object list.
+ *
+ * @param list Object list to add element to.
+ * @param elem Object list elem to add to the list.
+ */
 void add_elem(object_list_t *list, object_list_elem_t *elem) {
   if (list->size >= list->max_size) {
     list->max_size *= 2;
@@ -44,9 +42,15 @@ void add_elem(object_list_t *list, object_list_elem_t *elem) {
   }
   list->array[list->size] = elem;
   list->size++;
-//  qsort(list->array[0], list->size, sizeof(object_list_elem_t*), compare_list_elem);
 }
 
+/**
+ * @brief Returns if the object is covering the point.
+ *
+ * @param elem Object to check.
+ * @point Position to check.
+ * @returns 1 if covering, 0 otherwise.
+ */
 int is_covering (object_list_elem_t *elem, vector_t point) {
   if ((elem->point.x <= point.x) && ((elem->point.x + elem->ascii->width) > point.x)) {
     if ((elem->point.y <= point.y) && ((elem->point.y + elem->ascii->height) > point.y)) {
@@ -56,6 +60,13 @@ int is_covering (object_list_elem_t *elem, vector_t point) {
   return 0;
 }
 
+/**
+ * @brief Returns the char at a given position in the ascii ascii_art.
+ *
+ * @param ascii A struct storing the ascii art.
+ * @param point Position in the ascii.
+ * @returns Char at the position.
+ */
 char get_char_ascii(ascii_t *ascii, vector_t point) {
   return ascii->ascii[point.y * ascii->width + point.x];
 }
@@ -77,6 +88,12 @@ void for_all(object_list_t *list, object_list_elem_function_t function) {
   }
 }
 
+/**
+ * @brief Moves an object and updates its velocity.
+ *
+ * Is a object_list_elem_function_t so can be called with for_all.
+ * @param elem Object to move.
+ */
 void move_object(object_list_elem_t *elem) {
   elem->point.x += elem->velocity.x;
   elem->point.y += elem->velocity.y;
@@ -84,6 +101,12 @@ void move_object(object_list_elem_t *elem) {
   elem->velocity.y += elem->acceleration.y;
 }
 
+/**
+ * @brief Prints out an object.
+ *
+ * Is a object_list_elem_function_t so can be called with for_all.
+ * @param elem Object to print.
+ */
 void print_object(object_list_elem_t *elem) {
   printf("\nObject type: %d\n", elem->type);
   printf("Has:\n");
@@ -93,6 +116,13 @@ void print_object(object_list_elem_t *elem) {
   printf("Char at 0, 0: %c\n", get_char_ascii(elem->ascii, (vector_t) {0, 0}));
 }
 
+/**
+ * @brief Gets the first element with a matching type in the list.
+ *
+ * @param list List to look through.
+ * @param type Type of object to fine.
+ * @returns Object with matching type.
+ */
 object_list_elem_t *get_elem(object_list_t *list, type_t type) {
   for (int i = 0; i < list->size; i++) {
     if (list->array[i]->type == type) {
@@ -102,7 +132,13 @@ object_list_elem_t *get_elem(object_list_t *list, type_t type) {
   return NULL;
 }
 
-
+/**
+ * @brief Returns the colour for a paticular position.
+ *
+ * @param list The current game state.
+ * @param point The position to return the colour of.
+ * @returns The colour of the position.
+ */
 int get_color(object_list_t *list, vector_t point) {
   for (int i = 0; i < list->size; i++) {
     if (is_covering(list->array[i], point)) {
@@ -112,6 +148,13 @@ int get_color(object_list_t *list, vector_t point) {
   return 1;
 }
 
+/**
+ * @brief Prints the game.
+ *
+ * @param list The current game state.
+ * @param width Width of the screen being used.
+ * @param height Height of the screen being used.
+ */
 void print_game(object_list_t *list, int width, int height) {
   for (int i = 0; i < height; i++) {
     for (int j = 0; j < width; j++) {
@@ -128,12 +171,23 @@ void print_game(object_list_t *list, int width, int height) {
   }
 }
 
+/**
+ * @brief Free's all data used in the object list.
+ *
+ * @param list Object list to free.
+ */
 void free_object_list(object_list_t *list) {
   for_all(list, free_object_list_elem);
   free(list->array);
   free(list);
 }
 
+/**
+ * @brief Frees an object.
+ *
+ * Is a object_list_elem_function_t so can be called with for_all.
+ * @param elem Object to free.
+ */
 void free_object_list_elem(object_list_elem_t *elem) {
   if (elem->ascii != NULL) {
     free(elem->ascii);
