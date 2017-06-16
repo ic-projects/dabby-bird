@@ -13,7 +13,9 @@
 #include "object_list.h"
 #include <locale.h>
 
+/** Width of the game. */
 #define WIDTH 300
+/** Height of the game. */
 #define HEIGHT 100
 
 void move_pipes(object_list_elem_t *elem);

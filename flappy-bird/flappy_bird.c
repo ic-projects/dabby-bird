@@ -4,12 +4,20 @@
  */
 #include "flappy_bird.h"
 
+/** Ascii pipe */
 static char pipe_ascii[600] = "|#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#|                                                                              |#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#||#|";
 
+/** Ascii grass */
 static char grass_ascii[1200] = "/////\\\\//\\////\\\\///\\\\////////\\\\/||||////\\\\/////////\\\\\\\\)))))\\/////\\\\\\\\/////////\\((((\\\\\\////////\\\\\\))))))\\///|||||||////\\\\\\((((\\\\\\///\\\\///\\\\\\\\/////\\\\\\///////\\\\////\\\\\\////\\\\\\\\///\\\\//\\//\\///\\/\\/\\\\\\\\\\\\||||/////|||\\\\\\\\\\))))))(((////\\\\/////\\\\//\\////\\\\///\\\\////////\\\\/||||////\\\\/////////\\\\\\\\)))))\\/////\\\\\\\\/////////\\((((\\\\\\////////\\\\\\))))))\\///|||||||////\\\\\\((((\\\\\\///\\\\///\\\\\\\\/////\\\\\\///////\\\\////\\\\\\////\\\\\\\\///\\\\//\\//\\///\\/\\/\\\\\\\\\\\\||||/////|||\\\\\\\\\\))))))(((////\\\\                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        ";
-
+/** Ascii bird */
 static char bird_ascii[8] = "(@@)\"||\"";
 
+/**
+ * @brief Moves pipes that go off the screen to come back again.
+ *
+ * Is a object_list_elem_function_t so can be called with for_all.
+ * @param elem Object to move.
+ */
 void move_pipes(object_list_elem_t *elem) {
   if (elem->type == pipes) {
     if (elem->point.x <= -2) {
@@ -25,13 +33,24 @@ void move_pipes(object_list_elem_t *elem) {
   }
 }
 
+/**
+ * @brief Flaps the bird.
+ *
+ * Is a object_list_elem_function_t so can be called with for_all.
+ * @param elem Object to move.
+ */
 void flap(object_list_elem_t *elem) {
   if (elem->type == bird) {
     elem->velocity.y = -5;
   }
 }
 
-
+/**
+ * @brief Returns if the bird is dead or alive.
+ *
+ * @param list The object list.
+ * @retursn 0 if the bird is alive, 1 otherwise.
+ */
 int bird_coll(object_list_t *list) {
   object_list_elem_t *bird_elem = get_elem(list, bird);
   for (int i = 0; i < list->size; i++) {
@@ -51,6 +70,11 @@ int bird_coll(object_list_t *list) {
   return bird_elem->point.y >= HEIGHT;
 }
 
+/**
+ * @brief Initailises a game state for a flappy bird game.
+ *
+ * @returns An object list representing the initial game state.
+ */
 object_list_t *init_game(void) {
   srand(time(NULL));
 
@@ -128,6 +152,11 @@ object_list_t *init_game(void) {
 
 }
 
+/**
+ * @brief Renders the game, and updates the game state.
+ *
+ * @param list The object list.
+ */
 void render_game(object_list_t *list) {
   clear();
   for_all(list, move_object);
