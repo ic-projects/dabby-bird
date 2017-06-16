@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ * @brief Main file for motion-controlled games.
+ */
+
 #include <math.h>
 #include <unistd.h>
 #include "cv.h"

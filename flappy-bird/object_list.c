@@ -71,6 +71,13 @@ char get_char_ascii(ascii_t *ascii, vector_t point) {
   return ascii->ascii[point.y * ascii->width + point.x];
 }
 
+/**
+ * @brief Returns the char at a given position.
+ *
+ * @param list Object list.
+ * @param point Position of the char.
+ * @returns Char at given position.
+ */
 char get_char_list(object_list_t *list, vector_t point) {
   for (int i = 0; i < list->size; i++) {
     if (is_covering(list->array[i], point)) {
@@ -82,6 +89,12 @@ char get_char_list(object_list_t *list, vector_t point) {
   return EMPTY_SPACE;
 }
 
+/**
+ * @brief Applies a function to a object list.
+ * 
+ * @param list Object list to apply the function to.
+ * @param function Function to apply.
+ */
 void for_all(object_list_t *list, object_list_elem_function_t function) {
   for (int i = 0; i < list->size; i++) {
     function(list->array[i]);

@@ -1,0 +1,168 @@
+\hypertarget{calibration_8c}{}\section{calibration.\+c File Reference}
+\label{calibration_8c}\index{calibration.\+c@{calibration.\+c}}
+
+
+Functions to calibrate colours.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=149pt]{calibration_8c__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcalibration__t}{calibration\+\_\+t}
+\begin{DoxyCompactList}\small\item\em A struct to hold the H\+SV values of the calibrated skin colour. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{calibration_8c_ae5a332876fef43161febb75fb1355c8a}{in\+\_\+box} (int x, int y, int box\+\_\+x, int box\+\_\+y, int width, int height)
+\begin{DoxyCompactList}\small\item\em Given a coordinate and a box, determines whether it is in the box. \end{DoxyCompactList}\item 
+void \hyperlink{calibration_8c_aed953b3b59e6d4cb091a040919649956}{overlay\+\_\+frame} (Ipl\+Image $\ast$frame, int reg\+\_\+x, int reg\+\_\+y, int reg\+\_\+height, int reg\+\_\+width)
+\begin{DoxyCompactList}\small\item\em Given a frame, applies a darkened border around it. User will place their hand inside the undarkened centre box to calibrate their skin colour. \end{DoxyCompactList}\item 
+void \hyperlink{calibration_8c_aceafe429ab393d7f133fa456ea7d97b1}{final\+\_\+calibration} (Ipl\+Image $\ast$frame, \hyperlink{structcalibration__t}{calibration\+\_\+t} $\ast$c, int reg\+\_\+x, int reg\+\_\+y, int reg\+\_\+height, int reg\+\_\+width)
+\begin{DoxyCompactList}\small\item\em Calibrates according to the skin colour in centre box in the frame. \end{DoxyCompactList}\item 
+void \hyperlink{calibration_8c_ad1efc29c01e46f3615ba22fdbf7d5e02}{generic\+\_\+calibration} (\hyperlink{structcalibration__t}{calibration\+\_\+t} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Calibrates according to a generic skin colour. \end{DoxyCompactList}\item 
+void \hyperlink{calibration_8c_a799f54885674567fe534511576edb9dc}{calibrate} (Cv\+Capture $\ast$capture, \hyperlink{structcalibration__t}{calibration\+\_\+t} $\ast$calibration)
+\begin{DoxyCompactList}\small\item\em Displays a calibration window for the user to calibrate their skin. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to calibrate colours. 
+
+
+
+\subsection{Function Documentation}
+\index{calibration.\+c@{calibration.\+c}!calibrate@{calibrate}}
+\index{calibrate@{calibrate}!calibration.\+c@{calibration.\+c}}
+\subsubsection[{\texorpdfstring{calibrate(\+Cv\+Capture $\ast$capture, calibration\+\_\+t $\ast$calibration)}{calibrate(CvCapture *capture, calibration_t *calibration)}}]{\setlength{\rightskip}{0pt plus 5cm}void calibrate (
+\begin{DoxyParamCaption}
+\item[{Cv\+Capture $\ast$}]{capture, }
+\item[{{\bf calibration\+\_\+t} $\ast$}]{calibration}
+\end{DoxyParamCaption}
+)}\hypertarget{calibration_8c_a799f54885674567fe534511576edb9dc}{}\label{calibration_8c_a799f54885674567fe534511576edb9dc}
+
+
+Displays a calibration window for the user to calibrate their skin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em capture} & The Cv\+Capture video stream. \\
+\hline
+{\em calibration} & The calibration struct to place the skin colour values in. \\
+\hline
+\end{DoxyParams}
+\index{calibration.\+c@{calibration.\+c}!final\+\_\+calibration@{final\+\_\+calibration}}
+\index{final\+\_\+calibration@{final\+\_\+calibration}!calibration.\+c@{calibration.\+c}}
+\subsubsection[{\texorpdfstring{final\+\_\+calibration(\+Ipl\+Image $\ast$frame, calibration\+\_\+t $\ast$c, int reg\+\_\+x, int reg\+\_\+y, int reg\+\_\+height, int reg\+\_\+width)}{final_calibration(IplImage *frame, calibration_t *c, int reg_x, int reg_y, int reg_height, int reg_width)}}]{\setlength{\rightskip}{0pt plus 5cm}void final\+\_\+calibration (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{frame, }
+\item[{{\bf calibration\+\_\+t} $\ast$}]{c, }
+\item[{int}]{reg\+\_\+x, }
+\item[{int}]{reg\+\_\+y, }
+\item[{int}]{reg\+\_\+height, }
+\item[{int}]{reg\+\_\+width}
+\end{DoxyParamCaption}
+)}\hypertarget{calibration_8c_aceafe429ab393d7f133fa456ea7d97b1}{}\label{calibration_8c_aceafe429ab393d7f133fa456ea7d97b1}
+
+
+Calibrates according to the skin colour in centre box in the frame. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The Ipl\+Image frame. \\
+\hline
+{\em c} & The calibration struct to place the skin colour values in. \\
+\hline
+{\em reg\+\_\+x} & The centre box x coordinate. \\
+\hline
+{\em reg\+\_\+y} & The centre box y coordinate. \\
+\hline
+{\em reg\+\_\+height} & The centre box height. \\
+\hline
+{\em reg\+\_\+width} & The centre box width. \\
+\hline
+\end{DoxyParams}
+\index{calibration.\+c@{calibration.\+c}!generic\+\_\+calibration@{generic\+\_\+calibration}}
+\index{generic\+\_\+calibration@{generic\+\_\+calibration}!calibration.\+c@{calibration.\+c}}
+\subsubsection[{\texorpdfstring{generic\+\_\+calibration(calibration\+\_\+t $\ast$c)}{generic_calibration(calibration_t *c)}}]{\setlength{\rightskip}{0pt plus 5cm}void generic\+\_\+calibration (
+\begin{DoxyParamCaption}
+\item[{{\bf calibration\+\_\+t} $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{calibration_8c_ad1efc29c01e46f3615ba22fdbf7d5e02}{}\label{calibration_8c_ad1efc29c01e46f3615ba22fdbf7d5e02}
+
+
+Calibrates according to a generic skin colour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em c} & The calibration struct to place the skin colour values in. \\
+\hline
+\end{DoxyParams}
+\index{calibration.\+c@{calibration.\+c}!in\+\_\+box@{in\+\_\+box}}
+\index{in\+\_\+box@{in\+\_\+box}!calibration.\+c@{calibration.\+c}}
+\subsubsection[{\texorpdfstring{in\+\_\+box(int x, int y, int box\+\_\+x, int box\+\_\+y, int width, int height)}{in_box(int x, int y, int box_x, int box_y, int width, int height)}}]{\setlength{\rightskip}{0pt plus 5cm}bool in\+\_\+box (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{box\+\_\+x, }
+\item[{int}]{box\+\_\+y, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}\hypertarget{calibration_8c_ae5a332876fef43161febb75fb1355c8a}{}\label{calibration_8c_ae5a332876fef43161febb75fb1355c8a}
+
+
+Given a coordinate and a box, determines whether it is in the box. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x coordinate. \\
+\hline
+{\em y} & The y coordinate. \\
+\hline
+{\em box\+\_\+x} & The x coordinate of the centre of box. \\
+\hline
+{\em box\+\_\+y} & The y coordinate of the centre of box. \\
+\hline
+{\em width} & The distance from centre of the box to left or right edge. \\
+\hline
+{\em height} & The distance from centre of the box to top or bottom edge. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True iff the coordinate is in the box. 
+\end{DoxyReturn}
+\index{calibration.\+c@{calibration.\+c}!overlay\+\_\+frame@{overlay\+\_\+frame}}
+\index{overlay\+\_\+frame@{overlay\+\_\+frame}!calibration.\+c@{calibration.\+c}}
+\subsubsection[{\texorpdfstring{overlay\+\_\+frame(\+Ipl\+Image $\ast$frame, int reg\+\_\+x, int reg\+\_\+y, int reg\+\_\+height, int reg\+\_\+width)}{overlay_frame(IplImage *frame, int reg_x, int reg_y, int reg_height, int reg_width)}}]{\setlength{\rightskip}{0pt plus 5cm}void overlay\+\_\+frame (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{frame, }
+\item[{int}]{reg\+\_\+x, }
+\item[{int}]{reg\+\_\+y, }
+\item[{int}]{reg\+\_\+height, }
+\item[{int}]{reg\+\_\+width}
+\end{DoxyParamCaption}
+)}\hypertarget{calibration_8c_aed953b3b59e6d4cb091a040919649956}{}\label{calibration_8c_aed953b3b59e6d4cb091a040919649956}
+
+
+Given a frame, applies a darkened border around it. User will place their hand inside the undarkened centre box to calibrate their skin colour. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The Ipl\+Image frame. \\
+\hline
+{\em reg\+\_\+x} & The centre box x coordinate. \\
+\hline
+{\em reg\+\_\+y} & The centre box y coordinate. \\
+\hline
+{\em reg\+\_\+height} & The centre box height. \\
+\hline
+{\em reg\+\_\+width} & The centre box width. \\
+\hline
+\end{DoxyParams}

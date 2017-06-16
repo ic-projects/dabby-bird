@@ -1,4 +1,9 @@
 /**
+ * @file calibration.c
+ * @brief Functions to calibrate colours.
+ */
+
+/**
  * @brief A struct to hold the HSV values of the calibrated skin colour.
  */
 typedef struct {

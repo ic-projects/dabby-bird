@@ -1,4 +1,9 @@
 /**
+ * @file threshold.c
+ * @brief Functions to determine skin-coloured pixel within a frame.
+ */
+
+/**
  * @brief Checks whether a given value is in a given range.
  * Note that the minimum and maximum values can sometimes be swapped due to the
  * fact that HSV is circular.

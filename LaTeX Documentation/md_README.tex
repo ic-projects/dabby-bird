@@ -1,0 +1,24 @@
+\subsection*{Update the Open\+CV Submodule}
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily cd opencv}
+\item {\ttfamily git submodule update -\/-\/init}
+\end{DoxyEnumerate}
+
+\subsection*{Instructions to Build Open\+CV and Link to Project}
+
+
+\begin{DoxyEnumerate}
+\item {\ttfamily cd opencv}
+\item {\ttfamily mkdir build}
+\item {\ttfamily cd build}
+\item {\ttfamily cmake -\/D C\+M\+A\+K\+E\+\_\+\+B\+U\+I\+L\+D\+\_\+\+T\+Y\+PE=Release ..}
+\item {\ttfamily make -\/j\mbox{[}n\mbox{]}} where {\ttfamily \mbox{[}n\mbox{]}} is the number of threads to use.
+\item {\ttfamily cd ../..}
+\item {\ttfamily cmake .}
+\item {\ttfamily cmake-\/gui}
+\item Set the {\ttfamily Open\+C\+V\+\_\+\+D\+IR} parameter to point to the {\ttfamily opencv} folder.
+\item Click {\ttfamily Configure} and {\ttfamily Generate} and then close.
+\item {\ttfamily make} 
+\end{DoxyEnumerate}

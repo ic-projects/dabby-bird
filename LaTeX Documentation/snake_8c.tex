@@ -1,0 +1,122 @@
+\hypertarget{snake_8c}{}\section{flappy-\/bird/snake.c File Reference}
+\label{snake_8c}\index{flappy-\/bird/snake.\+c@{flappy-\/bird/snake.\+c}}
+
+
+Functions for initialising and rendering a snake game.  
+
+
+{\ttfamily \#include \char`\"{}snake.\+h\char`\"{}}\\*
+Include dependency graph for snake.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{snake_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$ \hyperlink{snake_8c_a762b57e20d9c7f2d75f7c67f72e839cf}{init\+\_\+game} (void)
+\begin{DoxyCompactList}\small\item\em Initailises a game state for a snake game. \end{DoxyCompactList}\item 
+void \hyperlink{snake_8c_a3564187b6b7de79c8346e9345f80ad69}{move\+\_\+snake} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list, \hyperlink{structvector__t}{vector\+\_\+t} dir)
+\begin{DoxyCompactList}\small\item\em Moves the snake. \end{DoxyCompactList}\item 
+void \hyperlink{snake_8c_a995012df8b3820f107bf72f57c32a523}{hit\+\_\+apple} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Checks if apple is hit, creates new apple if it is. \end{DoxyCompactList}\item 
+void \hyperlink{snake_8c_a7221128788d757397cdb69aed835df5c}{render\+\_\+game} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list, \hyperlink{structvector__t}{vector\+\_\+t} dir)
+\begin{DoxyCompactList}\small\item\em Renders the game, and updates the game state. \end{DoxyCompactList}\item 
+int \hyperlink{snake_8c_a0b885d532e21322ee502295347a1f014}{snake\+\_\+hit} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Checks if the snake has hit itself. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions for initialising and rendering a snake game. 
+
+
+
+\subsection{Function Documentation}
+\index{snake.\+c@{snake.\+c}!hit\+\_\+apple@{hit\+\_\+apple}}
+\index{hit\+\_\+apple@{hit\+\_\+apple}!snake.\+c@{snake.\+c}}
+\subsubsection[{\texorpdfstring{hit\+\_\+apple(object\+\_\+list\+\_\+t $\ast$list)}{hit_apple(object_list_t *list)}}]{\setlength{\rightskip}{0pt plus 5cm}void hit\+\_\+apple (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{snake_8c_a995012df8b3820f107bf72f57c32a523}{}\label{snake_8c_a995012df8b3820f107bf72f57c32a523}
+
+
+Checks if apple is hit, creates new apple if it is. 
+
+It also creates lengthens the snake if an apple is hit. 
+\begin{DoxyParams}{Parameters}
+{\em list} & The object list. \\
+\hline
+\end{DoxyParams}
+\index{snake.\+c@{snake.\+c}!init\+\_\+game@{init\+\_\+game}}
+\index{init\+\_\+game@{init\+\_\+game}!snake.\+c@{snake.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+game(void)}{init_game(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf object\+\_\+list\+\_\+t}$\ast$ init\+\_\+game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{snake_8c_a762b57e20d9c7f2d75f7c67f72e839cf}{}\label{snake_8c_a762b57e20d9c7f2d75f7c67f72e839cf}
+
+
+Initailises a game state for a snake game. 
+
+Initailises a game state for a flappy bird game.
+
+\begin{DoxyReturn}{Returns}
+An object list representing the initial game state. 
+\end{DoxyReturn}
+\index{snake.\+c@{snake.\+c}!move\+\_\+snake@{move\+\_\+snake}}
+\index{move\+\_\+snake@{move\+\_\+snake}!snake.\+c@{snake.\+c}}
+\subsubsection[{\texorpdfstring{move\+\_\+snake(object\+\_\+list\+\_\+t $\ast$list, vector\+\_\+t dir)}{move_snake(object_list_t *list, vector_t dir)}}]{\setlength{\rightskip}{0pt plus 5cm}void move\+\_\+snake (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list, }
+\item[{{\bf vector\+\_\+t}}]{dir}
+\end{DoxyParamCaption}
+)}\hypertarget{snake_8c_a3564187b6b7de79c8346e9345f80ad69}{}\label{snake_8c_a3564187b6b7de79c8346e9345f80ad69}
+
+
+Moves the snake. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The object list. \\
+\hline
+{\em dir} & Direction for the snake head to go. \\
+\hline
+\end{DoxyParams}
+\index{snake.\+c@{snake.\+c}!render\+\_\+game@{render\+\_\+game}}
+\index{render\+\_\+game@{render\+\_\+game}!snake.\+c@{snake.\+c}}
+\subsubsection[{\texorpdfstring{render\+\_\+game(object\+\_\+list\+\_\+t $\ast$list, vector\+\_\+t dir)}{render_game(object_list_t *list, vector_t dir)}}]{\setlength{\rightskip}{0pt plus 5cm}void render\+\_\+game (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list, }
+\item[{{\bf vector\+\_\+t}}]{dir}
+\end{DoxyParamCaption}
+)}\hypertarget{snake_8c_a7221128788d757397cdb69aed835df5c}{}\label{snake_8c_a7221128788d757397cdb69aed835df5c}
+
+
+Renders the game, and updates the game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The object list. \\
+\hline
+{\em dir} & Direction for the snake head to go. \\
+\hline
+\end{DoxyParams}
+\index{snake.\+c@{snake.\+c}!snake\+\_\+hit@{snake\+\_\+hit}}
+\index{snake\+\_\+hit@{snake\+\_\+hit}!snake.\+c@{snake.\+c}}
+\subsubsection[{\texorpdfstring{snake\+\_\+hit(object\+\_\+list\+\_\+t $\ast$list)}{snake_hit(object_list_t *list)}}]{\setlength{\rightskip}{0pt plus 5cm}int snake\+\_\+hit (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{snake_8c_a0b885d532e21322ee502295347a1f014}{}\label{snake_8c_a0b885d532e21322ee502295347a1f014}
+
+
+Checks if the snake has hit itself. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The object list. \\
+\hline
+\end{DoxyParams}

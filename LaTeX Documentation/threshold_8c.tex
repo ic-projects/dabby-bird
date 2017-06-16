@@ -1,0 +1,115 @@
+\hypertarget{threshold_8c}{}\section{threshold.\+c File Reference}
+\label{threshold_8c}\index{threshold.\+c@{threshold.\+c}}
+
+
+Functions to determine skin-\/coloured pixel within a frame.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{threshold_8c__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{threshold_8c_a79eb57ff62bb45178ac15c08b15ed27e}{in\+\_\+range} (unsigned char value, unsigned char min, unsigned char \hyperlink{uchar__array_8c_aa8aa6047ffa6af174d25a687952014d6}{max}, unsigned char range)
+\begin{DoxyCompactList}\small\item\em Checks whether a given value is in a given range. Note that the minimum and maximum values can sometimes be swapped due to the fact that H\+SV is circular. \end{DoxyCompactList}\item 
+Ipl\+Image $\ast$ \hyperlink{threshold_8c_ad5e2bed0c06e751ec19877291c7043cb}{get\+\_\+arm} (Ipl\+Image $\ast$frame, \hyperlink{structcalibration__t}{calibration\+\_\+t} $\ast$c)
+\begin{DoxyCompactList}\small\item\em Gets a black and white frame of where the skin is. Given a frame and a calibration struct, it marks each pixel white where skin is present. \end{DoxyCompactList}\item 
+double \hyperlink{threshold_8c_afd858b40efaa1559c3325b0cb5f5cd1c}{dist} (int x1, int x2, int y1, int y2, int z1, int z2)
+\begin{DoxyCompactList}\small\item\em Finds distance between 2 points in 3D space. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to determine skin-\/coloured pixel within a frame. 
+
+
+
+\subsection{Function Documentation}
+\index{threshold.\+c@{threshold.\+c}!dist@{dist}}
+\index{dist@{dist}!threshold.\+c@{threshold.\+c}}
+\subsubsection[{\texorpdfstring{dist(int x1, int x2, int y1, int y2, int z1, int z2)}{dist(int x1, int x2, int y1, int y2, int z1, int z2)}}]{\setlength{\rightskip}{0pt plus 5cm}double dist (
+\begin{DoxyParamCaption}
+\item[{int}]{x1, }
+\item[{int}]{x2, }
+\item[{int}]{y1, }
+\item[{int}]{y2, }
+\item[{int}]{z1, }
+\item[{int}]{z2}
+\end{DoxyParamCaption}
+)}\hypertarget{threshold_8c_afd858b40efaa1559c3325b0cb5f5cd1c}{}\label{threshold_8c_afd858b40efaa1559c3325b0cb5f5cd1c}
+
+
+Finds distance between 2 points in 3D space. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x1} & The x coordinate of the first point. \\
+\hline
+{\em x2} & The x coordinate of the second point. \\
+\hline
+{\em y1} & The y coordinate of the first point. \\
+\hline
+{\em y2} & The y coordinate of the second point. \\
+\hline
+{\em z1} & The z coordinate of the first point. \\
+\hline
+{\em z2} & The z coordinate of the second point. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the 2 point. 
+\end{DoxyReturn}
+\index{threshold.\+c@{threshold.\+c}!get\+\_\+arm@{get\+\_\+arm}}
+\index{get\+\_\+arm@{get\+\_\+arm}!threshold.\+c@{threshold.\+c}}
+\subsubsection[{\texorpdfstring{get\+\_\+arm(\+Ipl\+Image $\ast$frame, calibration\+\_\+t $\ast$c)}{get_arm(IplImage *frame, calibration_t *c)}}]{\setlength{\rightskip}{0pt plus 5cm}Ipl\+Image$\ast$ get\+\_\+arm (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{frame, }
+\item[{{\bf calibration\+\_\+t} $\ast$}]{c}
+\end{DoxyParamCaption}
+)}\hypertarget{threshold_8c_ad5e2bed0c06e751ec19877291c7043cb}{}\label{threshold_8c_ad5e2bed0c06e751ec19877291c7043cb}
+
+
+Gets a black and white frame of where the skin is. Given a frame and a calibration struct, it marks each pixel white where skin is present. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The Ipl\+Image frame. \\
+\hline
+{\em c} & The calibration which contains the skin colour. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A black and white Ipl\+Image frame indicating where skin is. 
+\end{DoxyReturn}
+\index{threshold.\+c@{threshold.\+c}!in\+\_\+range@{in\+\_\+range}}
+\index{in\+\_\+range@{in\+\_\+range}!threshold.\+c@{threshold.\+c}}
+\subsubsection[{\texorpdfstring{in\+\_\+range(unsigned char value, unsigned char min, unsigned char max, unsigned char range)}{in_range(unsigned char value, unsigned char min, unsigned char max, unsigned char range)}}]{\setlength{\rightskip}{0pt plus 5cm}bool in\+\_\+range (
+\begin{DoxyParamCaption}
+\item[{unsigned char}]{value, }
+\item[{unsigned char}]{min, }
+\item[{unsigned char}]{max, }
+\item[{unsigned char}]{range}
+\end{DoxyParamCaption}
+)}\hypertarget{threshold_8c_a79eb57ff62bb45178ac15c08b15ed27e}{}\label{threshold_8c_a79eb57ff62bb45178ac15c08b15ed27e}
+
+
+Checks whether a given value is in a given range. Note that the minimum and maximum values can sometimes be swapped due to the fact that H\+SV is circular. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em value} & The value to check whether it is in range. \\
+\hline
+{\em min} & Normally the minimum value to accept. \\
+\hline
+{\em max} & Normally the maximum value to accept. \\
+\hline
+{\em range} & The maximum value that is allowed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True iff the value is in the specified range. 
+\end{DoxyReturn}

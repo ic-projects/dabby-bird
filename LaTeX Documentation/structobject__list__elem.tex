@@ -1,0 +1,69 @@
+\hypertarget{structobject__list__elem}{}\section{object\+\_\+list\+\_\+elem Struct Reference}
+\label{structobject__list__elem}\index{object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}}
+
+
+A struct to store the state of an object.  
+
+
+
+
+{\ttfamily \#include $<$object\+\_\+list.\+h$>$}
+
+
+
+Collaboration diagram for object\+\_\+list\+\_\+elem\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=229pt]{structobject__list__elem__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t} \hyperlink{structobject__list__elem_aa84efc5c7fcf3887328cce7dc72fda67}{type}
+\item 
+\hyperlink{structvector__t}{vector\+\_\+t} \hyperlink{structobject__list__elem_a5e2e6e97dc9763c6713838d6f36fa0ba}{point}
+\item 
+\hyperlink{structvector__t}{vector\+\_\+t} \hyperlink{structobject__list__elem_affba049401aaf1488ce02106158a6b4b}{velocity}
+\item 
+\hyperlink{structvector__t}{vector\+\_\+t} \hyperlink{structobject__list__elem_a5bd8bb21c8d8b0d7b86e10773617ad55}{acceleration}
+\item 
+\hyperlink{structascii__t}{ascii\+\_\+t} $\ast$ \hyperlink{structobject__list__elem_ab490a018acd1306da39712322fa48597}{ascii}
+\item 
+uint16\+\_\+t \hyperlink{structobject__list__elem_ae5eb9e7b299437926de262dcc70de47e}{depth}
+\item 
+struct \hyperlink{structobject__list__elem}{object\+\_\+list\+\_\+elem} $\ast$ \hyperlink{structobject__list__elem_a71a54270804fe79669e899752f3e2992}{prev}
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A struct to store the state of an object. 
+
+\subsection{Field Documentation}
+\index{object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}!acceleration@{acceleration}}
+\index{acceleration@{acceleration}!object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}}
+\subsubsection[{\texorpdfstring{acceleration}{acceleration}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector\+\_\+t} object\+\_\+list\+\_\+elem\+::acceleration}\hypertarget{structobject__list__elem_a5bd8bb21c8d8b0d7b86e10773617ad55}{}\label{structobject__list__elem_a5bd8bb21c8d8b0d7b86e10773617ad55}
+Acceleration of the object. \index{object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}!ascii@{ascii}}
+\index{ascii@{ascii}!object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}}
+\subsubsection[{\texorpdfstring{ascii}{ascii}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf ascii\+\_\+t}$\ast$ object\+\_\+list\+\_\+elem\+::ascii}\hypertarget{structobject__list__elem_ab490a018acd1306da39712322fa48597}{}\label{structobject__list__elem_ab490a018acd1306da39712322fa48597}
+A pointer to an ascii struct. \index{object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}!depth@{depth}}
+\index{depth@{depth}!object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}}
+\subsubsection[{\texorpdfstring{depth}{depth}}]{\setlength{\rightskip}{0pt plus 5cm}uint16\+\_\+t object\+\_\+list\+\_\+elem\+::depth}\hypertarget{structobject__list__elem_ae5eb9e7b299437926de262dcc70de47e}{}\label{structobject__list__elem_ae5eb9e7b299437926de262dcc70de47e}
+Depth of the object. \index{object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}!point@{point}}
+\index{point@{point}!object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}}
+\subsubsection[{\texorpdfstring{point}{point}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector\+\_\+t} object\+\_\+list\+\_\+elem\+::point}\hypertarget{structobject__list__elem_a5e2e6e97dc9763c6713838d6f36fa0ba}{}\label{structobject__list__elem_a5e2e6e97dc9763c6713838d6f36fa0ba}
+Position of the object. \index{object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}!prev@{prev}}
+\index{prev@{prev}!object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}}
+\subsubsection[{\texorpdfstring{prev}{prev}}]{\setlength{\rightskip}{0pt plus 5cm}struct {\bf object\+\_\+list\+\_\+elem}$\ast$ object\+\_\+list\+\_\+elem\+::prev}\hypertarget{structobject__list__elem_a71a54270804fe79669e899752f3e2992}{}\label{structobject__list__elem_a71a54270804fe79669e899752f3e2992}
+Previous object (used in snake). \index{object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}!type@{type}}
+\index{type@{type}!object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}}
+\subsubsection[{\texorpdfstring{type}{type}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf type\+\_\+t} object\+\_\+list\+\_\+elem\+::type}\hypertarget{structobject__list__elem_aa84efc5c7fcf3887328cce7dc72fda67}{}\label{structobject__list__elem_aa84efc5c7fcf3887328cce7dc72fda67}
+Type of the object. \index{object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}!velocity@{velocity}}
+\index{velocity@{velocity}!object\+\_\+list\+\_\+elem@{object\+\_\+list\+\_\+elem}}
+\subsubsection[{\texorpdfstring{velocity}{velocity}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf vector\+\_\+t} object\+\_\+list\+\_\+elem\+::velocity}\hypertarget{structobject__list__elem_affba049401aaf1488ce02106158a6b4b}{}\label{structobject__list__elem_affba049401aaf1488ce02106158a6b4b}
+Velocity of the object. 
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+flappy-\/bird/\hyperlink{object__list_8h}{object\+\_\+list.\+h}\end{DoxyCompactItemize}

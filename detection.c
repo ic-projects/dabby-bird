@@ -1,3 +1,8 @@
+/**
+ * @file detection.c
+ * @brief Functions to detect position of hands.
+ */
+
 #define ITERATIONS 10
 
 /**

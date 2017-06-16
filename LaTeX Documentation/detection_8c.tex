@@ -1,0 +1,193 @@
+\hypertarget{detection_8c}{}\section{detection.\+c File Reference}
+\label{detection_8c}\index{detection.\+c@{detection.\+c}}
+
+
+Functions to detect position of hands.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=145pt]{detection_8c__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structhands__t}{hands\+\_\+t}
+\begin{DoxyCompactList}\small\item\em A struct that holds information about the positions of hands. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define {\bfseries I\+T\+E\+R\+A\+T\+I\+O\+NS}~10\hypertarget{detection_8c_aa9cc087d076e4fa101f8794a947bd01a}{}\label{detection_8c_aa9cc087d076e4fa101f8794a947bd01a}
+
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structhands__t}{hands\+\_\+t} $\ast$ \hyperlink{detection_8c_a02948972554282f1ea76afef45f735c7}{init\+\_\+hands} (void)
+\begin{DoxyCompactList}\small\item\em Initialises the \hyperlink{structhands__t}{hands\+\_\+t} struct. \end{DoxyCompactList}\item 
+double \hyperlink{detection_8c_a13e2aa455e1cc7d01751c4b4a35dc053}{dist} (int x, int y, int ux, int uy)
+\begin{DoxyCompactList}\small\item\em Calculates distance between 2 points. \end{DoxyCompactList}\item 
+void \hyperlink{detection_8c_ad4d12900f9017f74024a6ba1970998f7}{apply\+\_\+force\+\_\+point} (Ipl\+Image $\ast$frame, int $\ast$px, int $\ast$py, double initial, double scale)
+\begin{DoxyCompactList}\small\item\em Applies forces to a single point, converging it to the users hand. \end{DoxyCompactList}\item 
+void \hyperlink{detection_8c_a8816cbf0eb1257798bf51f4824039dc7}{apply\+\_\+force} (Ipl\+Image $\ast$frame, \hyperlink{structhands__t}{hands\+\_\+t} $\ast$h, double scale)
+\begin{DoxyCompactList}\small\item\em Applies forces to left and right hand points. \end{DoxyCompactList}\item 
+bool \hyperlink{detection_8c_aff9533b8dd99376fca5e19285ade1074}{outside\+\_\+range} (int x, int y, int rx, int ry, int rwidth, int rheight)
+\begin{DoxyCompactList}\small\item\em Calculates if a point is outside a region. \end{DoxyCompactList}\item 
+void \hyperlink{detection_8c_a82612834137e9eef986ce7f604aaef59}{detect\+\_\+hands} (Ipl\+Image $\ast$frame, \hyperlink{structhands__t}{hands\+\_\+t} $\ast$hands)
+\begin{DoxyCompactList}\small\item\em Detects new positions of the users hands. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Functions to detect position of hands. 
+
+
+
+\subsection{Function Documentation}
+\index{detection.\+c@{detection.\+c}!apply\+\_\+force@{apply\+\_\+force}}
+\index{apply\+\_\+force@{apply\+\_\+force}!detection.\+c@{detection.\+c}}
+\subsubsection[{\texorpdfstring{apply\+\_\+force(\+Ipl\+Image $\ast$frame, hands\+\_\+t $\ast$h, double scale)}{apply_force(IplImage *frame, hands_t *h, double scale)}}]{\setlength{\rightskip}{0pt plus 5cm}void apply\+\_\+force (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{frame, }
+\item[{{\bf hands\+\_\+t} $\ast$}]{h, }
+\item[{double}]{scale}
+\end{DoxyParamCaption}
+)}\hypertarget{detection_8c_a8816cbf0eb1257798bf51f4824039dc7}{}\label{detection_8c_a8816cbf0eb1257798bf51f4824039dc7}
+
+
+Applies forces to left and right hand points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The webcam image. \\
+\hline
+{\em h} & The hands struct to update. \\
+\hline
+{\em scale} & Scaling for how much the point moves. \\
+\hline
+\end{DoxyParams}
+\index{detection.\+c@{detection.\+c}!apply\+\_\+force\+\_\+point@{apply\+\_\+force\+\_\+point}}
+\index{apply\+\_\+force\+\_\+point@{apply\+\_\+force\+\_\+point}!detection.\+c@{detection.\+c}}
+\subsubsection[{\texorpdfstring{apply\+\_\+force\+\_\+point(\+Ipl\+Image $\ast$frame, int $\ast$px, int $\ast$py, double initial, double scale)}{apply_force_point(IplImage *frame, int *px, int *py, double initial, double scale)}}]{\setlength{\rightskip}{0pt plus 5cm}void apply\+\_\+force\+\_\+point (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{frame, }
+\item[{int $\ast$}]{px, }
+\item[{int $\ast$}]{py, }
+\item[{double}]{initial, }
+\item[{double}]{scale}
+\end{DoxyParamCaption}
+)}\hypertarget{detection_8c_ad4d12900f9017f74024a6ba1970998f7}{}\label{detection_8c_ad4d12900f9017f74024a6ba1970998f7}
+
+
+Applies forces to a single point, converging it to the users hand. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The webcam image. \\
+\hline
+{\em px} & A pointer to the x position of the point. \\
+\hline
+{\em py} & A pointer to the y position of the point. \\
+\hline
+{\em initial} & The initial x force to apply to the point. \\
+\hline
+{\em scale} & Scaling for how much the point moves. \\
+\hline
+\end{DoxyParams}
+\index{detection.\+c@{detection.\+c}!detect\+\_\+hands@{detect\+\_\+hands}}
+\index{detect\+\_\+hands@{detect\+\_\+hands}!detection.\+c@{detection.\+c}}
+\subsubsection[{\texorpdfstring{detect\+\_\+hands(\+Ipl\+Image $\ast$frame, hands\+\_\+t $\ast$hands)}{detect_hands(IplImage *frame, hands_t *hands)}}]{\setlength{\rightskip}{0pt plus 5cm}void detect\+\_\+hands (
+\begin{DoxyParamCaption}
+\item[{Ipl\+Image $\ast$}]{frame, }
+\item[{{\bf hands\+\_\+t} $\ast$}]{hands}
+\end{DoxyParamCaption}
+)}\hypertarget{detection_8c_a82612834137e9eef986ce7f604aaef59}{}\label{detection_8c_a82612834137e9eef986ce7f604aaef59}
+
+
+Detects new positions of the users hands. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em frame} & The newest webcam frame. \\
+\hline
+{\em hands} & The last position of the hands, is updated to be the new position. \\
+\hline
+\end{DoxyParams}
+\index{detection.\+c@{detection.\+c}!dist@{dist}}
+\index{dist@{dist}!detection.\+c@{detection.\+c}}
+\subsubsection[{\texorpdfstring{dist(int x, int y, int ux, int uy)}{dist(int x, int y, int ux, int uy)}}]{\setlength{\rightskip}{0pt plus 5cm}double dist (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{ux, }
+\item[{int}]{uy}
+\end{DoxyParamCaption}
+)}\hypertarget{detection_8c_a13e2aa455e1cc7d01751c4b4a35dc053}{}\label{detection_8c_a13e2aa455e1cc7d01751c4b4a35dc053}
+
+
+Calculates distance between 2 points. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & x position of point1. \\
+\hline
+{\em y} & y position of point1. \\
+\hline
+{\em ux} & x position of point2. \\
+\hline
+{\em uy} & y position of point2. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The distance between the 2 points. 
+\end{DoxyReturn}
+\index{detection.\+c@{detection.\+c}!init\+\_\+hands@{init\+\_\+hands}}
+\index{init\+\_\+hands@{init\+\_\+hands}!detection.\+c@{detection.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+hands(void)}{init_hands(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf hands\+\_\+t}$\ast$ init\+\_\+hands (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{detection_8c_a02948972554282f1ea76afef45f735c7}{}\label{detection_8c_a02948972554282f1ea76afef45f735c7}
+
+
+Initialises the \hyperlink{structhands__t}{hands\+\_\+t} struct. 
+
+\begin{DoxyReturn}{Returns}
+A pointer to the new \hyperlink{structhands__t}{hands\+\_\+t} struct. 
+\end{DoxyReturn}
+\index{detection.\+c@{detection.\+c}!outside\+\_\+range@{outside\+\_\+range}}
+\index{outside\+\_\+range@{outside\+\_\+range}!detection.\+c@{detection.\+c}}
+\subsubsection[{\texorpdfstring{outside\+\_\+range(int x, int y, int rx, int ry, int rwidth, int rheight)}{outside_range(int x, int y, int rx, int ry, int rwidth, int rheight)}}]{\setlength{\rightskip}{0pt plus 5cm}bool outside\+\_\+range (
+\begin{DoxyParamCaption}
+\item[{int}]{x, }
+\item[{int}]{y, }
+\item[{int}]{rx, }
+\item[{int}]{ry, }
+\item[{int}]{rwidth, }
+\item[{int}]{rheight}
+\end{DoxyParamCaption}
+)}\hypertarget{detection_8c_aff9533b8dd99376fca5e19285ade1074}{}\label{detection_8c_aff9533b8dd99376fca5e19285ade1074}
+
+
+Calculates if a point is outside a region. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & X pos of the point. \\
+\hline
+{\em y} & Y pos of the point. \\
+\hline
+{\em rx} & X pos of the region. \\
+\hline
+{\em ry} & Y pos of the region. \\
+\hline
+{\em rwidth} & Width of the region. \\
+\hline
+{\em rheight} & Height of the region. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the point is outside the region, false otherwise. 
+\end{DoxyReturn}

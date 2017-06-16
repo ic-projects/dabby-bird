@@ -1,4 +1,9 @@
 /**
+ * @file uchar_array.c
+ * @brief Definition of and functions for unsigned character array.
+ */
+
+/**
  * @brief A struct to hold a unsigned char array.
  * Also holds the size, and the standard deviation.
  */

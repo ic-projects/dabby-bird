@@ -1,0 +1,159 @@
+\hypertarget{uchar__array_8c}{}\section{uchar\+\_\+array.\+c File Reference}
+\label{uchar__array_8c}\index{uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}}
+
+
+Definition of and functions for unsigned character array.  
+
+
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{uchar__array_8c__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t}
+\begin{DoxyCompactList}\small\item\em A struct to hold a unsigned char array. Also holds the size, and the standard deviation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \hyperlink{uchar__array_8c_aa8aa6047ffa6af174d25a687952014d6}{max} (\hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Finds the maximum value inside a given unsigned char array. Note that if the array is empty then the maximum value is zero. \end{DoxyCompactList}\item 
+double \hyperlink{uchar__array_8c_a50552ea1e39782dc965895b0f0b3e8e6}{avg} (\hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Finds the average value of a given unsigned char array. \end{DoxyCompactList}\item 
+void \hyperlink{uchar__array_8c_a21e9524031b40a15fca0fa9a51493576}{standard\+\_\+dev} (\hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} $\ast$data)
+\begin{DoxyCompactList}\small\item\em Sets the standard deviation of a given \hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} struct. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{uchar__array_8c_ac65bb7dcd66d8fedef18465aae7192b6}{lower} (\hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} $\ast$data, double dev)
+\begin{DoxyCompactList}\small\item\em Finds the lower quartile of a given unsigned char array. \end{DoxyCompactList}\item 
+unsigned char \hyperlink{uchar__array_8c_a7d2bd11f8ff2cdddcc17eb20f5ca0f22}{upper} (\hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} $\ast$data, double dev)
+\begin{DoxyCompactList}\small\item\em Finds the upper quartile of a given unsigned char array. \end{DoxyCompactList}\item 
+\hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} $\ast$ \hyperlink{uchar__array_8c_a42f3a0201ba1b1fcea1554356da70aaa}{init\+\_\+arr} (int size)
+\begin{DoxyCompactList}\small\item\em Initialises a \hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} struct. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definition of and functions for unsigned character array. 
+
+
+
+\subsection{Function Documentation}
+\index{uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}!avg@{avg}}
+\index{avg@{avg}!uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}}
+\subsubsection[{\texorpdfstring{avg(uchar\+\_\+array\+\_\+t $\ast$data)}{avg(uchar_array_t *data)}}]{\setlength{\rightskip}{0pt plus 5cm}double avg (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar\+\_\+array\+\_\+t} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{uchar__array_8c_a50552ea1e39782dc965895b0f0b3e8e6}{}\label{uchar__array_8c_a50552ea1e39782dc965895b0f0b3e8e6}
+
+
+Finds the average value of a given unsigned char array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The unsigned char array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The average value. 
+\end{DoxyReturn}
+\index{uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}!init\+\_\+arr@{init\+\_\+arr}}
+\index{init\+\_\+arr@{init\+\_\+arr}!uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}}
+\subsubsection[{\texorpdfstring{init\+\_\+arr(int size)}{init_arr(int size)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf uchar\+\_\+array\+\_\+t}$\ast$ init\+\_\+arr (
+\begin{DoxyParamCaption}
+\item[{int}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{uchar__array_8c_a42f3a0201ba1b1fcea1554356da70aaa}{}\label{uchar__array_8c_a42f3a0201ba1b1fcea1554356da70aaa}
+
+
+Initialises a \hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & The number of elements in the array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The pointer to the initialised struct. 
+\end{DoxyReturn}
+\index{uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}!lower@{lower}}
+\index{lower@{lower}!uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}}
+\subsubsection[{\texorpdfstring{lower(uchar\+\_\+array\+\_\+t $\ast$data, double dev)}{lower(uchar_array_t *data, double dev)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char lower (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar\+\_\+array\+\_\+t} $\ast$}]{data, }
+\item[{double}]{dev}
+\end{DoxyParamCaption}
+)}\hypertarget{uchar__array_8c_ac65bb7dcd66d8fedef18465aae7192b6}{}\label{uchar__array_8c_ac65bb7dcd66d8fedef18465aae7192b6}
+
+
+Finds the lower quartile of a given unsigned char array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The unsigned char array. \\
+\hline
+{\em dev} & The deviation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The lower quartile. 
+\end{DoxyReturn}
+\index{uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}!max@{max}}
+\index{max@{max}!uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}}
+\subsubsection[{\texorpdfstring{max(uchar\+\_\+array\+\_\+t $\ast$data)}{max(uchar_array_t *data)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char max (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar\+\_\+array\+\_\+t} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{uchar__array_8c_aa8aa6047ffa6af174d25a687952014d6}{}\label{uchar__array_8c_aa8aa6047ffa6af174d25a687952014d6}
+
+
+Finds the maximum value inside a given unsigned char array. Note that if the array is empty then the maximum value is zero. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The unsigned char array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The maximum value. 
+\end{DoxyReturn}
+\index{uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}!standard\+\_\+dev@{standard\+\_\+dev}}
+\index{standard\+\_\+dev@{standard\+\_\+dev}!uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}}
+\subsubsection[{\texorpdfstring{standard\+\_\+dev(uchar\+\_\+array\+\_\+t $\ast$data)}{standard_dev(uchar_array_t *data)}}]{\setlength{\rightskip}{0pt plus 5cm}void standard\+\_\+dev (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar\+\_\+array\+\_\+t} $\ast$}]{data}
+\end{DoxyParamCaption}
+)}\hypertarget{uchar__array_8c_a21e9524031b40a15fca0fa9a51493576}{}\label{uchar__array_8c_a21e9524031b40a15fca0fa9a51493576}
+
+
+Sets the standard deviation of a given \hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} struct. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The \hyperlink{structuchar__array__t}{uchar\+\_\+array\+\_\+t} struct. \\
+\hline
+\end{DoxyParams}
+\index{uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}!upper@{upper}}
+\index{upper@{upper}!uchar\+\_\+array.\+c@{uchar\+\_\+array.\+c}}
+\subsubsection[{\texorpdfstring{upper(uchar\+\_\+array\+\_\+t $\ast$data, double dev)}{upper(uchar_array_t *data, double dev)}}]{\setlength{\rightskip}{0pt plus 5cm}unsigned char upper (
+\begin{DoxyParamCaption}
+\item[{{\bf uchar\+\_\+array\+\_\+t} $\ast$}]{data, }
+\item[{double}]{dev}
+\end{DoxyParamCaption}
+)}\hypertarget{uchar__array_8c_a7d2bd11f8ff2cdddcc17eb20f5ca0f22}{}\label{uchar__array_8c_a7d2bd11f8ff2cdddcc17eb20f5ca0f22}
+
+
+Finds the upper quartile of a given unsigned char array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & The unsigned char array. \\
+\hline
+{\em dev} & The deviation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The upper quartile. 
+\end{DoxyReturn}

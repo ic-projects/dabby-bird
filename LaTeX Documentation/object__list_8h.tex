@@ -1,0 +1,399 @@
+\hypertarget{object__list_8h}{}\section{flappy-\/bird/object\+\_\+list.h File Reference}
+\label{object__list_8h}\index{flappy-\/bird/object\+\_\+list.\+h@{flappy-\/bird/object\+\_\+list.\+h}}
+
+
+Data type for storing the state of the game.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$ncurses.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}ascii\+\_\+art.\+h\char`\"{}}\\*
+Include dependency graph for object\+\_\+list.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{object__list_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{object__list_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structvector__t}{vector\+\_\+t}
+\begin{DoxyCompactList}\small\item\em A vector pair struct. \end{DoxyCompactList}\item 
+struct \hyperlink{structobject__list__elem}{object\+\_\+list\+\_\+elem}
+\begin{DoxyCompactList}\small\item\em A struct to store the state of an object. \end{DoxyCompactList}\item 
+struct \hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t}
+\begin{DoxyCompactList}\small\item\em A struct to store a list of objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{object__list_8h_a04b412d04e415d878767eab5ffff4677}{I\+N\+I\+T\+I\+A\+L\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+S\+T\+\_\+\+S\+I\+ZE}~20
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structobject__list__elem}{object\+\_\+list\+\_\+elem} \hyperlink{object__list_8h_aa7f60b410e6fda9534caeb8370a37afe}{object\+\_\+list\+\_\+elem\+\_\+t}\hypertarget{object__list_8h_aa7f60b410e6fda9534caeb8370a37afe}{}\label{object__list_8h_aa7f60b410e6fda9534caeb8370a37afe}
+
+\begin{DoxyCompactList}\small\item\em A struct to store the state of an object. \end{DoxyCompactList}\item 
+typedef void \hyperlink{object__list_8h_a8c0ae6099b8fdca0e67d9becdcf7f41a}{object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t}(\hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$)
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t} \{ \\*
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124a2e5a1d1868aa44bc89666a660fbd80c1}{bird}, 
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124ae981b0996a25c6ce78fdcdeb2760fcb9}{pipes}, 
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124a8f8fb34d055a92cd148205c30448191d}{cloud}, 
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124a831e08074fc31bab018bf359a0184978}{ground}, 
+\\*
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124a623729bc7f52fd9fe906d7419b6cb6a9}{snake\+\_\+head}, 
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124a4c042afd04f58519cd7423e6692bcb51}{snake\+\_\+body}, 
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124ae8d97019b10b7f38ac6111ce32bce9cb}{snake\+\_\+tail}, 
+\hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124abd99b5b55239e844758c74c59b9e7d41}{snake\+\_\+apple}, 
+\\*
+{\bfseries bird}, 
+{\bfseries pipes}, 
+{\bfseries cloud}, 
+{\bfseries ground}, 
+\\*
+{\bfseries snake\+\_\+head}, 
+{\bfseries snake\+\_\+body}, 
+{\bfseries snake\+\_\+tail}, 
+{\bfseries snake\+\_\+apple}
+ \}\begin{DoxyCompactList}\small\item\em An enum to store the type of the object. \end{DoxyCompactList}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$ \hyperlink{object__list_8h_aa07b767ecbf25d42522f5e5c6cfa162d}{new\+\_\+list} (void)
+\begin{DoxyCompactList}\small\item\em Returns an initialised object list. \end{DoxyCompactList}\item 
+void \hyperlink{object__list_8h_aa9ac729f1918ea527a60e5a769468d6f}{add\+\_\+elem} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list, \hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Adds a element to an object list. \end{DoxyCompactList}\item 
+int \hyperlink{object__list_8h_a5dc17578dcc024c7a0565da1f09731ef}{is\+\_\+covering} (\hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$elem, \hyperlink{structvector__t}{vector\+\_\+t} point)
+\begin{DoxyCompactList}\small\item\em Returns if the object is covering the point. \end{DoxyCompactList}\item 
+char \hyperlink{object__list_8h_ab255cb4f59e0897d84e1fcd1f13d0aaf}{get\+\_\+char\+\_\+ascii} (\hyperlink{structascii__t}{ascii\+\_\+t} $\ast$ascii, \hyperlink{structvector__t}{vector\+\_\+t} point)
+\begin{DoxyCompactList}\small\item\em Returns the char at a given position in the ascii ascii\+\_\+art. \end{DoxyCompactList}\item 
+char \hyperlink{object__list_8h_a5717656aa7aaf47fbb157dea036caa64}{get\+\_\+char\+\_\+list} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list, \hyperlink{structvector__t}{vector\+\_\+t} point)
+\begin{DoxyCompactList}\small\item\em Returns the char at a given position. \end{DoxyCompactList}\item 
+void \hyperlink{object__list_8h_a3e25de16af12613be7fd6af5352dd278}{for\+\_\+all} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list, \hyperlink{object__list_8h_a8c0ae6099b8fdca0e67d9becdcf7f41a}{object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t} function)
+\begin{DoxyCompactList}\small\item\em Applies a function to a object list. \end{DoxyCompactList}\item 
+void \hyperlink{object__list_8h_ae864a67817f9ab01b9dce31622db8bd4}{move\+\_\+object} (\hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Moves an object and updates its velocity. \end{DoxyCompactList}\item 
+void \hyperlink{object__list_8h_ab1699f73a3d81de38bd9c257fd5c7c33}{print\+\_\+object} (\hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Prints out an object. \end{DoxyCompactList}\item 
+int \hyperlink{object__list_8h_adfeca24f8c478e115ecbf3aea11d8ba7}{get\+\_\+color} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list, \hyperlink{structvector__t}{vector\+\_\+t} point)
+\begin{DoxyCompactList}\small\item\em Returns the colour for a paticular position. \end{DoxyCompactList}\item 
+void \hyperlink{object__list_8h_ade10433a1987f67f338680acedef6e37}{print\+\_\+game} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list, int width, int height)
+\begin{DoxyCompactList}\small\item\em Prints the game. \end{DoxyCompactList}\item 
+void \hyperlink{object__list_8h_ad001d6c6eab89b13e3a3d3de8577a2a8}{free\+\_\+object\+\_\+list} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Free\textquotesingle{}s all data used in the object list. \end{DoxyCompactList}\item 
+void \hyperlink{object__list_8h_a49b883aa53db8bccee0f12c877ff35d8}{free\+\_\+object\+\_\+list\+\_\+elem} (\hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Frees an object. \end{DoxyCompactList}\item 
+\hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$ \hyperlink{object__list_8h_af714066fdea3e60e3fa9f81aacba166a}{get\+\_\+elem} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list, \hyperlink{object__list_8h_adee610a3c7375031538811d29f6a4124}{type\+\_\+t} type)
+\begin{DoxyCompactList}\small\item\em Gets the first element with a matching type in the list. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Data type for storing the state of the game. 
+
+
+
+\subsection{Macro Definition Documentation}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!I\+N\+I\+T\+I\+A\+L\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+S\+T\+\_\+\+S\+I\+ZE@{I\+N\+I\+T\+I\+A\+L\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+S\+T\+\_\+\+S\+I\+ZE}}
+\index{I\+N\+I\+T\+I\+A\+L\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+S\+T\+\_\+\+S\+I\+ZE@{I\+N\+I\+T\+I\+A\+L\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+S\+T\+\_\+\+S\+I\+ZE}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{I\+N\+I\+T\+I\+A\+L\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+S\+T\+\_\+\+S\+I\+ZE}{INITIAL_OBJECT_LIST_SIZE}}]{\setlength{\rightskip}{0pt plus 5cm}\#define I\+N\+I\+T\+I\+A\+L\+\_\+\+O\+B\+J\+E\+C\+T\+\_\+\+L\+I\+S\+T\+\_\+\+S\+I\+ZE~20}\hypertarget{object__list_8h_a04b412d04e415d878767eab5ffff4677}{}\label{object__list_8h_a04b412d04e415d878767eab5ffff4677}
+Initial size of the object list array. 
+
+\subsection{Typedef Documentation}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t@{object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t}}
+\index{object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t@{object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t}{object_list_elem_function_t}}]{\setlength{\rightskip}{0pt plus 5cm}typedef void object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t({\bf object\+\_\+list\+\_\+elem\+\_\+t} $\ast$)}\hypertarget{object__list_8h_a8c0ae6099b8fdca0e67d9becdcf7f41a}{}\label{object__list_8h_a8c0ae6099b8fdca0e67d9becdcf7f41a}
+A function that can be applied to all of the list. 
+
+\subsection{Enumeration Type Documentation}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!type\+\_\+t@{type\+\_\+t}}
+\index{type\+\_\+t@{type\+\_\+t}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{type\+\_\+t}{type_t}}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf type\+\_\+t}}\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124}
+
+
+An enum to store the type of the object. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{bird@{bird}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!bird@{bird}}\item[{\em 
+bird\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124a2e5a1d1868aa44bc89666a660fbd80c1}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124a2e5a1d1868aa44bc89666a660fbd80c1}
+}]Bird. \index{pipes@{pipes}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!pipes@{pipes}}\item[{\em 
+pipes\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124ae981b0996a25c6ce78fdcdeb2760fcb9}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124ae981b0996a25c6ce78fdcdeb2760fcb9}
+}]Pipes. \index{cloud@{cloud}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!cloud@{cloud}}\item[{\em 
+cloud\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124a8f8fb34d055a92cd148205c30448191d}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124a8f8fb34d055a92cd148205c30448191d}
+}]Cloud. \index{ground@{ground}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!ground@{ground}}\item[{\em 
+ground\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124a831e08074fc31bab018bf359a0184978}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124a831e08074fc31bab018bf359a0184978}
+}]Ground. \index{snake\+\_\+head@{snake\+\_\+head}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!snake\+\_\+head@{snake\+\_\+head}}\item[{\em 
+snake\+\_\+head\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124a623729bc7f52fd9fe906d7419b6cb6a9}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124a623729bc7f52fd9fe906d7419b6cb6a9}
+}]Snake Head. \index{snake\+\_\+body@{snake\+\_\+body}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!snake\+\_\+body@{snake\+\_\+body}}\item[{\em 
+snake\+\_\+body\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124a4c042afd04f58519cd7423e6692bcb51}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124a4c042afd04f58519cd7423e6692bcb51}
+}]Snake Body. \index{snake\+\_\+tail@{snake\+\_\+tail}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!snake\+\_\+tail@{snake\+\_\+tail}}\item[{\em 
+snake\+\_\+tail\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124ae8d97019b10b7f38ac6111ce32bce9cb}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124ae8d97019b10b7f38ac6111ce32bce9cb}
+}]Snake Tail. \index{snake\+\_\+apple@{snake\+\_\+apple}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!snake\+\_\+apple@{snake\+\_\+apple}}\item[{\em 
+snake\+\_\+apple\hypertarget{object__list_8h_adee610a3c7375031538811d29f6a4124abd99b5b55239e844758c74c59b9e7d41}{}\label{object__list_8h_adee610a3c7375031538811d29f6a4124abd99b5b55239e844758c74c59b9e7d41}
+}]Snake Apple. \end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!add\+\_\+elem@{add\+\_\+elem}}
+\index{add\+\_\+elem@{add\+\_\+elem}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{add\+\_\+elem(object\+\_\+list\+\_\+t $\ast$list, object\+\_\+list\+\_\+elem\+\_\+t $\ast$elem)}{add_elem(object_list_t *list, object_list_elem_t *elem)}}]{\setlength{\rightskip}{0pt plus 5cm}void add\+\_\+elem (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list, }
+\item[{{\bf object\+\_\+list\+\_\+elem\+\_\+t} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_aa9ac729f1918ea527a60e5a769468d6f}{}\label{object__list_8h_aa9ac729f1918ea527a60e5a769468d6f}
+
+
+Adds a element to an object list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Object list to add element to. \\
+\hline
+{\em elem} & Object list elem to add to the list. \\
+\hline
+\end{DoxyParams}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!for\+\_\+all@{for\+\_\+all}}
+\index{for\+\_\+all@{for\+\_\+all}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{for\+\_\+all(object\+\_\+list\+\_\+t $\ast$list, object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t function)}{for_all(object_list_t *list, object_list_elem_function_t function)}}]{\setlength{\rightskip}{0pt plus 5cm}void for\+\_\+all (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list, }
+\item[{{\bf object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t}}]{function}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_a3e25de16af12613be7fd6af5352dd278}{}\label{object__list_8h_a3e25de16af12613be7fd6af5352dd278}
+
+
+Applies a function to a object list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Object list to apply the function to. \\
+\hline
+{\em function} & Function to apply. \\
+\hline
+\end{DoxyParams}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!free\+\_\+object\+\_\+list@{free\+\_\+object\+\_\+list}}
+\index{free\+\_\+object\+\_\+list@{free\+\_\+object\+\_\+list}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{free\+\_\+object\+\_\+list(object\+\_\+list\+\_\+t $\ast$list)}{free_object_list(object_list_t *list)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+object\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_ad001d6c6eab89b13e3a3d3de8577a2a8}{}\label{object__list_8h_ad001d6c6eab89b13e3a3d3de8577a2a8}
+
+
+Free\textquotesingle{}s all data used in the object list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Object list to free. \\
+\hline
+\end{DoxyParams}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!free\+\_\+object\+\_\+list\+\_\+elem@{free\+\_\+object\+\_\+list\+\_\+elem}}
+\index{free\+\_\+object\+\_\+list\+\_\+elem@{free\+\_\+object\+\_\+list\+\_\+elem}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{free\+\_\+object\+\_\+list\+\_\+elem(object\+\_\+list\+\_\+elem\+\_\+t $\ast$elem)}{free_object_list_elem(object_list_elem_t *elem)}}]{\setlength{\rightskip}{0pt plus 5cm}void free\+\_\+object\+\_\+list\+\_\+elem (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+elem\+\_\+t} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_a49b883aa53db8bccee0f12c877ff35d8}{}\label{object__list_8h_a49b883aa53db8bccee0f12c877ff35d8}
+
+
+Frees an object. 
+
+Is a object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t so can be called with for\+\_\+all. 
+\begin{DoxyParams}{Parameters}
+{\em elem} & Object to free. \\
+\hline
+\end{DoxyParams}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!get\+\_\+char\+\_\+ascii@{get\+\_\+char\+\_\+ascii}}
+\index{get\+\_\+char\+\_\+ascii@{get\+\_\+char\+\_\+ascii}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+char\+\_\+ascii(ascii\+\_\+t $\ast$ascii, vector\+\_\+t point)}{get_char_ascii(ascii_t *ascii, vector_t point)}}]{\setlength{\rightskip}{0pt plus 5cm}char get\+\_\+char\+\_\+ascii (
+\begin{DoxyParamCaption}
+\item[{{\bf ascii\+\_\+t} $\ast$}]{ascii, }
+\item[{{\bf vector\+\_\+t}}]{point}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_ab255cb4f59e0897d84e1fcd1f13d0aaf}{}\label{object__list_8h_ab255cb4f59e0897d84e1fcd1f13d0aaf}
+
+
+Returns the char at a given position in the ascii ascii\+\_\+art. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ascii} & A struct storing the ascii art. \\
+\hline
+{\em point} & Position in the ascii. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Char at the position. 
+\end{DoxyReturn}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!get\+\_\+char\+\_\+list@{get\+\_\+char\+\_\+list}}
+\index{get\+\_\+char\+\_\+list@{get\+\_\+char\+\_\+list}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+char\+\_\+list(object\+\_\+list\+\_\+t $\ast$list, vector\+\_\+t point)}{get_char_list(object_list_t *list, vector_t point)}}]{\setlength{\rightskip}{0pt plus 5cm}char get\+\_\+char\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list, }
+\item[{{\bf vector\+\_\+t}}]{point}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_a5717656aa7aaf47fbb157dea036caa64}{}\label{object__list_8h_a5717656aa7aaf47fbb157dea036caa64}
+
+
+Returns the char at a given position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & Object list. \\
+\hline
+{\em point} & Position of the char. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Char at given position. 
+\end{DoxyReturn}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!get\+\_\+color@{get\+\_\+color}}
+\index{get\+\_\+color@{get\+\_\+color}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+color(object\+\_\+list\+\_\+t $\ast$list, vector\+\_\+t point)}{get_color(object_list_t *list, vector_t point)}}]{\setlength{\rightskip}{0pt plus 5cm}int get\+\_\+color (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list, }
+\item[{{\bf vector\+\_\+t}}]{point}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_adfeca24f8c478e115ecbf3aea11d8ba7}{}\label{object__list_8h_adfeca24f8c478e115ecbf3aea11d8ba7}
+
+
+Returns the colour for a paticular position. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The current game state. \\
+\hline
+{\em point} & The position to return the colour of. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The colour of the position. 
+\end{DoxyReturn}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!get\+\_\+elem@{get\+\_\+elem}}
+\index{get\+\_\+elem@{get\+\_\+elem}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+elem(object\+\_\+list\+\_\+t $\ast$list, type\+\_\+t type)}{get_elem(object_list_t *list, type_t type)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf object\+\_\+list\+\_\+elem\+\_\+t}$\ast$ get\+\_\+elem (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list, }
+\item[{{\bf type\+\_\+t}}]{type}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_af714066fdea3e60e3fa9f81aacba166a}{}\label{object__list_8h_af714066fdea3e60e3fa9f81aacba166a}
+
+
+Gets the first element with a matching type in the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & List to look through. \\
+\hline
+{\em type} & Type of object to fine. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Object with matching type. 
+\end{DoxyReturn}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!is\+\_\+covering@{is\+\_\+covering}}
+\index{is\+\_\+covering@{is\+\_\+covering}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{is\+\_\+covering(object\+\_\+list\+\_\+elem\+\_\+t $\ast$elem, vector\+\_\+t point)}{is_covering(object_list_elem_t *elem, vector_t point)}}]{\setlength{\rightskip}{0pt plus 5cm}int is\+\_\+covering (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+elem\+\_\+t} $\ast$}]{elem, }
+\item[{{\bf vector\+\_\+t}}]{point}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_a5dc17578dcc024c7a0565da1f09731ef}{}\label{object__list_8h_a5dc17578dcc024c7a0565da1f09731ef}
+
+
+Returns if the object is covering the point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em elem} & Object to check.  Position to check. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if covering, 0 otherwise. 
+\end{DoxyReturn}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!move\+\_\+object@{move\+\_\+object}}
+\index{move\+\_\+object@{move\+\_\+object}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{move\+\_\+object(object\+\_\+list\+\_\+elem\+\_\+t $\ast$elem)}{move_object(object_list_elem_t *elem)}}]{\setlength{\rightskip}{0pt plus 5cm}void move\+\_\+object (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+elem\+\_\+t} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_ae864a67817f9ab01b9dce31622db8bd4}{}\label{object__list_8h_ae864a67817f9ab01b9dce31622db8bd4}
+
+
+Moves an object and updates its velocity. 
+
+Is a object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t so can be called with for\+\_\+all. 
+\begin{DoxyParams}{Parameters}
+{\em elem} & Object to move. \\
+\hline
+\end{DoxyParams}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!new\+\_\+list@{new\+\_\+list}}
+\index{new\+\_\+list@{new\+\_\+list}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{new\+\_\+list(void)}{new_list(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf object\+\_\+list\+\_\+t}$\ast$ new\+\_\+list (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_aa07b767ecbf25d42522f5e5c6cfa162d}{}\label{object__list_8h_aa07b767ecbf25d42522f5e5c6cfa162d}
+
+
+Returns an initialised object list. 
+
+\begin{DoxyReturn}{Returns}
+Initialised object list. 
+\end{DoxyReturn}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!print\+\_\+game@{print\+\_\+game}}
+\index{print\+\_\+game@{print\+\_\+game}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+game(object\+\_\+list\+\_\+t $\ast$list, int width, int height)}{print_game(object_list_t *list, int width, int height)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+game (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list, }
+\item[{int}]{width, }
+\item[{int}]{height}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_ade10433a1987f67f338680acedef6e37}{}\label{object__list_8h_ade10433a1987f67f338680acedef6e37}
+
+
+Prints the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The current game state. \\
+\hline
+{\em width} & Width of the screen being used. \\
+\hline
+{\em height} & Height of the screen being used. \\
+\hline
+\end{DoxyParams}
+\index{object\+\_\+list.\+h@{object\+\_\+list.\+h}!print\+\_\+object@{print\+\_\+object}}
+\index{print\+\_\+object@{print\+\_\+object}!object\+\_\+list.\+h@{object\+\_\+list.\+h}}
+\subsubsection[{\texorpdfstring{print\+\_\+object(object\+\_\+list\+\_\+elem\+\_\+t $\ast$elem)}{print_object(object_list_elem_t *elem)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+\_\+object (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+elem\+\_\+t} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\hypertarget{object__list_8h_ab1699f73a3d81de38bd9c257fd5c7c33}{}\label{object__list_8h_ab1699f73a3d81de38bd9c257fd5c7c33}
+
+
+Prints out an object. 
+
+Is a object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t so can be called with for\+\_\+all. 
+\begin{DoxyParams}{Parameters}
+{\em elem} & Object to print. \\
+\hline
+\end{DoxyParams}

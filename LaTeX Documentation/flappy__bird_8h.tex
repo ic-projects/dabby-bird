@@ -1,0 +1,149 @@
+\hypertarget{flappy__bird_8h}{}\section{flappy-\/bird/flappy\+\_\+bird.h File Reference}
+\label{flappy__bird_8h}\index{flappy-\/bird/flappy\+\_\+bird.\+h@{flappy-\/bird/flappy\+\_\+bird.\+h}}
+
+
+Header file for flappy bird.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$unistd.\+h$>$}\\*
+{\ttfamily \#include $<$time.\+h$>$}\\*
+{\ttfamily \#include $<$ncurses.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}ascii\+\_\+art.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}object\+\_\+list.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$locale.\+h$>$}\\*
+Include dependency graph for flappy\+\_\+bird.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{flappy__bird_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=174pt]{flappy__bird_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{flappy__bird_8h_a241aeeb764887ae5e3de58b98f04b16d}{W\+I\+D\+TH}~300
+\item 
+\#define \hyperlink{flappy__bird_8h_aed89bd71aee8be823e8a20ec4e093c1e}{H\+E\+I\+G\+HT}~100
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{flappy__bird_8h_a3b902613461225bf63bce5edba6ffc41}{move\+\_\+pipes} (\hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Moves pipes that go off the screen to come back again. \end{DoxyCompactList}\item 
+void \hyperlink{flappy__bird_8h_af4eb214e10d7aaeab2154492b26ce34e}{flap} (\hyperlink{structobject__list__elem__t}{object\+\_\+list\+\_\+elem\+\_\+t} $\ast$elem)
+\begin{DoxyCompactList}\small\item\em Flaps the bird. \end{DoxyCompactList}\item 
+int \hyperlink{flappy__bird_8h_a7f50b187387b6a10fffae9ed5809f741}{bird\+\_\+coll} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Returns if the bird is dead or alive. \end{DoxyCompactList}\item 
+\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$ \hyperlink{flappy__bird_8h_a762b57e20d9c7f2d75f7c67f72e839cf}{init\+\_\+game} (void)
+\begin{DoxyCompactList}\small\item\em Initailises a game state for a flappy bird game. \end{DoxyCompactList}\item 
+void \hyperlink{flappy__bird_8h_a73eabc67ee2946d88d6a855f1db5ef2b}{render\+\_\+game} (\hyperlink{structobject__list__t}{object\+\_\+list\+\_\+t} $\ast$list)
+\begin{DoxyCompactList}\small\item\em Renders the game, and updates the game state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Header file for flappy bird. 
+
+
+
+\subsection{Macro Definition Documentation}
+\index{flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}!H\+E\+I\+G\+HT@{H\+E\+I\+G\+HT}}
+\index{H\+E\+I\+G\+HT@{H\+E\+I\+G\+HT}!flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}}
+\subsubsection[{\texorpdfstring{H\+E\+I\+G\+HT}{HEIGHT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define H\+E\+I\+G\+HT~100}\hypertarget{flappy__bird_8h_aed89bd71aee8be823e8a20ec4e093c1e}{}\label{flappy__bird_8h_aed89bd71aee8be823e8a20ec4e093c1e}
+Height of the game, in characters. \index{flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}!W\+I\+D\+TH@{W\+I\+D\+TH}}
+\index{W\+I\+D\+TH@{W\+I\+D\+TH}!flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}}
+\subsubsection[{\texorpdfstring{W\+I\+D\+TH}{WIDTH}}]{\setlength{\rightskip}{0pt plus 5cm}\#define W\+I\+D\+TH~300}\hypertarget{flappy__bird_8h_a241aeeb764887ae5e3de58b98f04b16d}{}\label{flappy__bird_8h_a241aeeb764887ae5e3de58b98f04b16d}
+Width of the game, in characters. 
+
+\subsection{Function Documentation}
+\index{flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}!bird\+\_\+coll@{bird\+\_\+coll}}
+\index{bird\+\_\+coll@{bird\+\_\+coll}!flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}}
+\subsubsection[{\texorpdfstring{bird\+\_\+coll(object\+\_\+list\+\_\+t $\ast$list)}{bird_coll(object_list_t *list)}}]{\setlength{\rightskip}{0pt plus 5cm}int bird\+\_\+coll (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{flappy__bird_8h_a7f50b187387b6a10fffae9ed5809f741}{}\label{flappy__bird_8h_a7f50b187387b6a10fffae9ed5809f741}
+
+
+Returns if the bird is dead or alive. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The object list.  0 if the bird is alive, 1 otherwise. \\
+\hline
+\end{DoxyParams}
+\index{flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}!flap@{flap}}
+\index{flap@{flap}!flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}}
+\subsubsection[{\texorpdfstring{flap(object\+\_\+list\+\_\+elem\+\_\+t $\ast$elem)}{flap(object_list_elem_t *elem)}}]{\setlength{\rightskip}{0pt plus 5cm}void flap (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+elem\+\_\+t} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\hypertarget{flappy__bird_8h_af4eb214e10d7aaeab2154492b26ce34e}{}\label{flappy__bird_8h_af4eb214e10d7aaeab2154492b26ce34e}
+
+
+Flaps the bird. 
+
+Is a object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t so can be called with for\+\_\+all. 
+\begin{DoxyParams}{Parameters}
+{\em elem} & Object to move. \\
+\hline
+\end{DoxyParams}
+\index{flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}!init\+\_\+game@{init\+\_\+game}}
+\index{init\+\_\+game@{init\+\_\+game}!flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}}
+\subsubsection[{\texorpdfstring{init\+\_\+game(void)}{init_game(void)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf object\+\_\+list\+\_\+t}$\ast$ init\+\_\+game (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}\hypertarget{flappy__bird_8h_a762b57e20d9c7f2d75f7c67f72e839cf}{}\label{flappy__bird_8h_a762b57e20d9c7f2d75f7c67f72e839cf}
+
+
+Initailises a game state for a flappy bird game. 
+
+\begin{DoxyReturn}{Returns}
+An object list representing the initial game state.
+\end{DoxyReturn}
+Initailises a game state for a flappy bird game.
+
+\begin{DoxyReturn}{Returns}
+An object list representing the initial game state. 
+\end{DoxyReturn}
+\index{flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}!move\+\_\+pipes@{move\+\_\+pipes}}
+\index{move\+\_\+pipes@{move\+\_\+pipes}!flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}}
+\subsubsection[{\texorpdfstring{move\+\_\+pipes(object\+\_\+list\+\_\+elem\+\_\+t $\ast$elem)}{move_pipes(object_list_elem_t *elem)}}]{\setlength{\rightskip}{0pt plus 5cm}void move\+\_\+pipes (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+elem\+\_\+t} $\ast$}]{elem}
+\end{DoxyParamCaption}
+)}\hypertarget{flappy__bird_8h_a3b902613461225bf63bce5edba6ffc41}{}\label{flappy__bird_8h_a3b902613461225bf63bce5edba6ffc41}
+
+
+Moves pipes that go off the screen to come back again. 
+
+Is a object\+\_\+list\+\_\+elem\+\_\+function\+\_\+t so can be called with for\+\_\+all. 
+\begin{DoxyParams}{Parameters}
+{\em elem} & Object to move. \\
+\hline
+\end{DoxyParams}
+\index{flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}!render\+\_\+game@{render\+\_\+game}}
+\index{render\+\_\+game@{render\+\_\+game}!flappy\+\_\+bird.\+h@{flappy\+\_\+bird.\+h}}
+\subsubsection[{\texorpdfstring{render\+\_\+game(object\+\_\+list\+\_\+t $\ast$list)}{render_game(object_list_t *list)}}]{\setlength{\rightskip}{0pt plus 5cm}void render\+\_\+game (
+\begin{DoxyParamCaption}
+\item[{{\bf object\+\_\+list\+\_\+t} $\ast$}]{list}
+\end{DoxyParamCaption}
+)}\hypertarget{flappy__bird_8h_a73eabc67ee2946d88d6a855f1db5ef2b}{}\label{flappy__bird_8h_a73eabc67ee2946d88d6a855f1db5ef2b}
+
+
+Renders the game, and updates the game state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em list} & The object list. \\
+\hline
+\end{DoxyParams}

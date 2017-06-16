@@ -1,0 +1,6 @@
+<map id="main.cpp" name="main.cpp">
+<area shape="rect" id="node6" href="$uchar__array_8c.html" title="Definition of and functions for unsigned character array. " alt="" coords="354,80,455,107"/>
+<area shape="rect" id="node7" href="$calibration_8c.html" title="Functions to calibrate colours. " alt="" coords="480,80,572,107"/>
+<area shape="rect" id="node8" href="$threshold_8c.html" title="Functions to determine skin&#45;coloured pixel within a frame. " alt="" coords="596,80,683,107"/>
+<area shape="rect" id="node9" href="$detection_8c.html" title="Functions to detect position of hands. " alt="" coords="707,80,793,107"/>
+</map>
