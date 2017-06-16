@@ -5,7 +5,7 @@
 #include "snake.h"
 
 /**
- * @brief Creates and plays the game.
+ * @brief Creates and plays the game, WASD controls.
  */
 int main(void) {
   object_list_t *objects = init_game();

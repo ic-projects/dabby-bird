@@ -4,6 +4,9 @@
  */
 #include "flappy_bird.h"
 
+/**
+ * @brief Makes and plays the game, space bar controls.
+ */
 int main(int argc, char **argv) {
   object_list_t *objects = init_game();
   while (!bird_coll(objects)) {
