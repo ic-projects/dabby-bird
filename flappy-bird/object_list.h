@@ -1,3 +1,7 @@
+/**
+ * @file object_list.h
+ * @brief Data type for storing the state of the game.
+ */
 #ifndef object_list_h
 #define object_list_h
 #include <stdint.h>
@@ -43,7 +47,6 @@ typedef struct {
 typedef void object_list_elem_function_t(object_list_elem_t *);
 
 object_list_t *new_list(void);
-void remove_elem(object_list_t *list, uint16_t id);
 void add_elem(object_list_t *list, object_list_elem_t *elem);
 int is_covering (object_list_elem_t *elem, vector_t point);
 char get_char_ascii(ascii_t *ascii, vector_t point);

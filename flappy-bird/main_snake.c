@@ -1,3 +1,7 @@
+/**
+ * @file ascii_art.h
+ * @brief Main file for snake game.
+ */
 #include "snake.h"
 
 int main(int argc, char **argv) {

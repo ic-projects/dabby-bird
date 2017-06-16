@@ -1,3 +1,7 @@
+/**
+ * @file flappy_bird.h
+ * @brief Header file for flappy bird
+ */
 #ifndef flappy_bird_h
 #define flappy_bird_h
 #include <stdio.h>

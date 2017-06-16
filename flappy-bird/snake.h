@@ -1,3 +1,7 @@
+/**
+ * @file snake.h
+ * @brief Header file for snake.c
+ */
 #ifndef flappy_bird_h
 #define flappy_bird_h
 #include <stdio.h>
@@ -11,13 +15,6 @@
 
 #define WIDTH 50
 #define HEIGHT 50
-
-typedef enum {
-  N,
-  E,
-  S,
-  W,
-} dir_t;
 
 int snake_hit(object_list_t *list);
 object_list_t *init_game(void);

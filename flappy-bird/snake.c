@@ -1,3 +1,7 @@
+/**
+ * @file snake.c
+ * @brief Functions for initialising and rendering a snake game
+ */
 #include "snake.h"
 
 static char snake[1] = "&";

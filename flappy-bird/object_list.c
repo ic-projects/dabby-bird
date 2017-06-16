@@ -1,3 +1,7 @@
+/**
+ * @file object_list.c
+ * @brief Functions for using object list.
+ */
 #include "object_list.h"
 
 int compare_list_elem(const void *a, const void *b) {

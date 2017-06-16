@@ -1,3 +1,7 @@
+/**
+ * @file main.c
+ * @brief Main file for flappy bird game.
+ */
 #include "flappy_bird.h"
 
 int main(int argc, char **argv) {
@@ -13,7 +17,7 @@ int main(int argc, char **argv) {
     }
 //    for_all(objects, print_object);
 
-    //usleep(100*1000);
+    usleep(100*1000);
   }
   sleep(5);
   endwin();

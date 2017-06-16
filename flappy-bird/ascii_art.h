@@ -1,3 +1,7 @@
+/**
+ * @file ascii_art.h
+ * @brief Struct for storing ascii-art.
+ */
 #ifndef ascii_art_h
 #define ascii_art_h
 #include <stdint.h>
