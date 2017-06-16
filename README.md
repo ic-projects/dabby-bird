@@ -1,4 +1,10 @@
 # Terminal-based Motion-controlled Game Engine using OpenCV
+## Use Keyboard control mode
+1. 'cd flappy-bird'
+2. 'make'
+3. './main' For flappy bird.
+4. './main_snake' For snake.
+
 ## Update the OpenCV Submodule
 1. `cd opencv`
 2. `git submodule update --init`
