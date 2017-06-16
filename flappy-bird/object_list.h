@@ -51,13 +51,10 @@ char get_char_list(object_list_t *list, vector_t point);
 void for_all(object_list_t *list, object_list_elem_function_t function);
 void move_object(object_list_elem_t *elem);
 void print_object(object_list_elem_t *elem);
-object_list_elem_t *get_bird (object_list_t *list);
 int get_color(object_list_t *list, vector_t point);
-object_list_elem_t *get_head(object_list_t *list);
-object_list_elem_t *get_tail(object_list_t *list);
-object_list_elem_t *get_apple(object_list_t *list);
 void print_game(object_list_t *list, int width, int height);
 void free_object_list(object_list_t *list);
 void free_object_list_elem(object_list_elem_t *elem);
+object_list_elem_t *get_elem(object_list_t *list, type_t type);
 
 #endif

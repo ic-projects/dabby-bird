@@ -29,22 +29,22 @@ void flap(object_list_elem_t *elem) {
 
 
 int bird_coll(object_list_t *list) {
-  object_list_elem_t *bird = get_bird(list);
+  object_list_elem_t *bird_elem = get_elem(list, bird);
   for (int i = 0; i < list->size; i++) {
     if (list->array[i]->type == pipes) {
       vector_t test_point;
-      if (is_covering(list->array[i], bird->point)) {
-        test_point = (vector_t){.x = 0, .y = bird->point.y - list->array[i]->point.y};
+      if (is_covering(list->array[i], bird_elem->point)) {
+        test_point = (vector_t){.x = 0, .y = bird_elem->point.y - list->array[i]->point.y};
         return get_char_ascii(list->array[i]->ascii, test_point) != ' ';
       }
-      test_point = (vector_t){.x = bird->point.x, .y = bird->point.y + bird->ascii->width};
+      test_point = (vector_t){.x = bird_elem->point.x, .y = bird_elem->point.y + bird_elem->ascii->width};
       if (is_covering(list->array[i], test_point)) {
-        test_point = (vector_t){.x = 0, .y = bird->point.y + bird->ascii->width - list->array[i]->point.y};
+        test_point = (vector_t){.x = 0, .y = bird_elem->point.y + bird_elem->ascii->width - list->array[i]->point.y};
         return get_char_ascii(list->array[i]->ascii, test_point) != ' ';
       }
     }
   }
-  return bird->point.y >= HEIGHT;
+  return bird_elem->point.y >= HEIGHT;
 }
 
 object_list_t *init_game(void) {

@@ -89,43 +89,15 @@ void print_object(object_list_elem_t *elem) {
   printf("Char at 0, 0: %c\n", get_char_ascii(elem->ascii, (vector_t){0, 0}));
 }
 
-
-
-object_list_elem_t *get_bird (object_list_t *list) {
+object_list_elem_t *get_elem(object_list_t *list, type_t type) {
   for (int i = 0; i < list->size; i++) {
-    if (list->array[i]->type == bird) {
+    if (list->array[i]->type == type) {
       return list->array[i];
     }
   }
   return NULL;
 }
 
-object_list_elem_t *get_head(object_list_t *list) {
-  for (int i = 0; i < list->size; i++) {
-    if (list->array[i]->type == snake_head) {
-      return list->array[i];
-    }
-  }
-  return NULL;
-}
-
-object_list_elem_t *get_tail(object_list_t *list) {
-  for (int i = 0; i < list->size; i++) {
-    if (list->array[i]->type == snake_tail) {
-      return list->array[i];
-    }
-  }
-  return NULL;
-}
-
-object_list_elem_t *get_apple(object_list_t *list) {
-  for (int i = 0; i < list->size; i++) {
-    if (list->array[i]->type == snake_apple) {
-      return list->array[i];
-    }
-  }
-  return NULL;
-}
 
 int get_color(object_list_t *list, vector_t point) {
   for (int i = 0; i < list->size; i++) {
@@ -159,6 +131,8 @@ void free_object_list(object_list_t *list) {
 }
 
 void free_object_list_elem(object_list_elem_t *elem) {
-  free(elem->ascii);
+  if (elem->ascii != NULL) {
+    free(elem->ascii);
+  }
   free(elem);
 }

@@ -83,7 +83,7 @@ object_list_t *init_game(void) {
 }
 
 void move_snake(object_list_t *list, vector_t dir) {
-  object_list_elem_t *snake = get_tail(list);
+  object_list_elem_t *snake = get_elem(list, snake_tail);
   for (; snake->type != snake_head; snake = snake->prev) {
     snake->point = snake->prev->point;
   }
@@ -99,11 +99,11 @@ void move_snake(object_list_t *list, vector_t dir) {
 }
 
 void hit_apple(object_list_t *list) {
-  object_list_elem_t *head = get_head(list);
-  object_list_elem_t *apple = get_apple(list);
+  object_list_elem_t *head_elem = get_elem(list, snake_head);
+  object_list_elem_t *apple = get_elem(list, snake_apple);
 
-  if (head->point.x == apple->point.x && head->point.y == apple->point.y) {
-    object_list_elem_t *tail = get_tail(list);
+  if (head_elem->point.x == apple->point.x && head_elem->point.y == apple->point.y) {
+    object_list_elem_t *tail = get_elem(list, snake_tail);
     tail->type = snake_body;
     object_list_elem_t *ntail = malloc(sizeof(object_list_elem_t));
     ntail->point = tail->point;
@@ -132,7 +132,7 @@ void render_game(object_list_t *list, vector_t dir) {
 }
 
 int snake_hit(object_list_t *list) {
-  object_list_elem_t *head = get_head(list);
+  object_list_elem_t *head = get_elem(list, snake_head);
   for (int i = 0; i < list->size; i++) {
     if (list->array[i]->type == snake_body || list->array[i]->type == snake_tail) {
       if (list->array[i]->point.x == head->point.x && list->array[i]->point.y == head->point.y) {
