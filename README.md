@@ -1,4 +1,8 @@
-# C Project Extension - Flappy Bird
+# Terminal-based Motion-controlled Game Engine using OpenCV
+## Update the OpenCV Submodule
+1. `cd opencv`
+2. `git submodule update --init`
+
 ## Instructions to Build OpenCV and Link to Project
 
 1. `cd opencv`
