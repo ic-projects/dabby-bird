@@ -11,7 +11,7 @@
 #include "calibration.c"
 #include "threshold.c"
 #include "detection.c"
-#include "flappy_bird.c"
+#include "snake.c"
 
 void generate_movement_frame(IplImage *debug_frame, const IplImage *prev_frame, const IplImage *frame);
 
@@ -58,21 +58,25 @@ int main(int argc, char **argv) {
 
         int half = frame->height / 2;
 
-        if (is_down && hands->left_y < half && hands->right_y < half) {
-          is_down = false;
-        } else if (!is_down && hands->left_y > half && hands->right_y > half) {
-          is_down = true;
-          for_all(objects, flap);
+        char c = 0;
+
+        c = getch();
+
+        if (c == 'W' || c == 'w' || (hands->left_y > half && hands->right_y > half)) {
+          snake_dir = (vector_t) {.x = 0, .y = -1};
+        }
+        if (c == 'A' || c == 'a' || (hands->left_y < half && hands->right_y > half)) {
+          snake_dir = (vector_t) {.x = -1, .y = 0};
+        }
+        if (c == 'S' || c == 's' || (hands->left_y < half && hands->right_y < half)) {
+          snake_dir = (vector_t) {.x = 0, .y = 1};
+        }
+        if (c == 'D' || c == 'd' || (hands->left_y > half && hands->right_y < half)) {
+          snake_dir = (vector_t) {.x = 1, .y = 0};
         }
 
         if (is_alive) {
           render_game(objects);
-        }
-        char c = 0;
-
-        c = getch();
-        if (c == ' ') {
-          for_all(objects, flap);
         }
 
         if (c == 'r') {
@@ -81,13 +85,8 @@ int main(int argc, char **argv) {
           objects = init_game();
         }
 
-        if (bird_coll()) {
+        if (snake_hit()) {
           is_alive = 0;
-        }
-
-        if (get_elem(objects, bird)->point.y > HEIGHT - 10) {
-          get_elem(objects, bird)->velocity.y = 0;
-          get_elem(objects, bird)->point.y = HEIGHT-10;
         }
 
         cvCircle(frame, cvPoint(hands->left_x, hands->left_y), 10, red, 15);
