@@ -15,7 +15,6 @@
 #define HEIGHT 50
 #define INITIAL_OBJECT_LIST_SIZE 20
 
-
 typedef struct {
   char *ascii;
   int color;
@@ -39,7 +38,9 @@ typedef struct {
   int16_t y;
 } vector_t;
 
-typedef struct {
+typedef struct object_list_elem object_list_elem_t;
+
+struct object_list_elem {
   type_t type;
   vector_t point;
   vector_t velocity;
@@ -47,7 +48,8 @@ typedef struct {
   ascii_t *ascii;
   uint16_t depth;
   struct object_list_elem *prev;
-} object_list_elem_t;
+};
+
 
 typedef struct {
   object_list_elem_t **array;
@@ -233,11 +235,11 @@ object_list_t *init_game(void) {
   object_list_t *objects = new_list();
   vector_t zero = {0, 0};
 
-  object_list_elem_t *head = malloc(sizeof(object_list_elem_t));
+  object_list_elem_t *head = (object_list_elem_t *) malloc(sizeof(object_list_elem_t));
   head->point = (vector_t) {.x = WIDTH/2, .y = HEIGHT/2};
   head->velocity = zero;
   head->acceleration = zero;
-  head->ascii = malloc(sizeof(ascii_t));
+  head->ascii = (ascii_t *) malloc(sizeof(ascii_t));
   head->ascii->height = 1;
   head->ascii->width = 1;
   head->ascii->ascii = snake;
@@ -247,11 +249,11 @@ object_list_t *init_game(void) {
   add_elem(objects, head);
 
 
-  object_list_elem_t *body = malloc(sizeof(object_list_elem_t));
+  object_list_elem_t *body = (object_list_elem_t *) malloc(sizeof(object_list_elem_t));
   body->point = (vector_t) {.x = WIDTH/2 + 1, .y = HEIGHT/2};
   body->velocity = (vector_t) {.x = -1};
   body->acceleration = zero;
-  body->ascii = malloc(sizeof(ascii_t));
+  body->ascii = (ascii_t *) malloc(sizeof(ascii_t));
   body->ascii->height = 1;
   body->ascii->width = 1;
   body->ascii->ascii = snake;
@@ -261,11 +263,11 @@ object_list_t *init_game(void) {
   body->prev = head;
   add_elem(objects, body);
 
-  object_list_elem_t *tail = malloc(sizeof(object_list_elem_t));
+  object_list_elem_t *tail = (object_list_elem_t *) malloc(sizeof(object_list_elem_t));
   tail->point = (vector_t) {.x = WIDTH/2 + 2, .y = HEIGHT/2};
   tail->velocity = zero;
   tail->acceleration = zero;
-  tail->ascii = malloc(sizeof(ascii_t));
+  tail->ascii = (ascii_t *) malloc(sizeof(ascii_t));
   tail->ascii->height = 1;
   tail->ascii->width = 1;
   tail->ascii->ascii = snake;
@@ -276,11 +278,11 @@ object_list_t *init_game(void) {
   add_elem(objects, tail);
 
 
-  object_list_elem_t *apple = malloc(sizeof(object_list_elem_t));
+  object_list_elem_t *apple = (object_list_elem_t *) malloc(sizeof(object_list_elem_t));
   apple->point = (vector_t) {.x = rand() % WIDTH, .y = rand() % HEIGHT};
   apple->velocity = zero;
   apple->acceleration = zero;
-  apple->ascii = malloc(sizeof(ascii_t));
+  apple->ascii = (ascii_t *) malloc(sizeof(ascii_t));
   apple->ascii->height = 1;
   apple->ascii->width = 1;
   apple->ascii->ascii = char_apple;
@@ -340,9 +342,9 @@ void hit_apple(object_list_t *list) {
   if (head_elem->point.x == apple->point.x && head_elem->point.y == apple->point.y) {
     object_list_elem_t *tail = get_elem(list, snake_tail);
     tail->type = snake_body;
-    object_list_elem_t *ntail = malloc(sizeof(object_list_elem_t));
+    object_list_elem_t *ntail = (object_list_elem_t *) malloc(sizeof(object_list_elem_t));
     ntail->point = tail->point;
-    ntail->ascii = malloc(sizeof(ascii_t));
+    ntail->ascii = (ascii_t *) malloc(sizeof(ascii_t));
     ntail->ascii->height = 1;
     ntail->ascii->width = 1;
     ntail->ascii->ascii = snake;

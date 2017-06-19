@@ -38,7 +38,9 @@ typedef struct {
   int16_t y;
 } vector_t;
 
-typedef struct {
+typedef struct object_list_elem object_list_elem_t;
+
+struct object_list_elem {
   type_t type;
   vector_t point;
   vector_t velocity;
@@ -46,7 +48,8 @@ typedef struct {
   ascii_t *ascii;
   uint16_t depth;
   struct object_list_elem *prev;
-} object_list_elem_t;
+};
+
 
 typedef struct {
   object_list_elem_t **array;

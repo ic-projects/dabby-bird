@@ -77,11 +77,11 @@ int main(int argc, char **argv) {
 
         if (c == 'r') {
           is_alive = 1;
-          free_objects_list(objects);
+          free_object_list(objects);
           objects = init_game();
         }
 
-        if (bird_coll()) {
+        if (bird_coll(objects)) {
           is_alive = 0;
         }
 
@@ -118,7 +118,7 @@ int main(int argc, char **argv) {
   cvReleaseImage(&result);
   cvReleaseImage(&arm);
 
-  free_objects_list(objects);
+  free_object_list(objects);
   free(hands);
   free(c);
 

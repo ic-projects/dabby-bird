@@ -39,6 +39,7 @@ int main(int argc, char **argv) {
 
   object_list_t *objects = init_game();
   int is_alive = 1;
+  vector_t snake_dir = {.x = -1, .y = 0};
 
   while (cvWaitKey(10) != 'q') {
     frame = cvQueryFrame(capture);
@@ -76,16 +77,16 @@ int main(int argc, char **argv) {
         }
 
         if (is_alive) {
-          render_game(objects);
+          render_game(objects, snake_dir);
         }
 
         if (c == 'r') {
           is_alive = 1;
-          free_objects_list(objects);
+          free_object_list(objects);
           objects = init_game();
         }
 
-        if (snake_hit()) {
+        if (snake_hit(objects)) {
           is_alive = 0;
         }
 
@@ -117,7 +118,7 @@ int main(int argc, char **argv) {
   cvReleaseImage(&result);
   cvReleaseImage(&arm);
 
-  free_objects_list(objects);
+  free_object_list(objects);
   free(hands);
   free(c);
 
