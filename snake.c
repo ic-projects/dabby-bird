@@ -296,7 +296,7 @@ object_list_t *init_game(void) {
   cbreak();
   initscr();
   noecho();
-  timeout(100);
+  timeout(1);
 
   start_color();
   init_pair(1, COLOR_WHITE, COLOR_BLUE);

@@ -34,11 +34,12 @@ int main(int argc, char **argv) {
   calibration_t *c = (calibration_t *) malloc(sizeof(calibration_t));
   calibrate(capture, c);
 
-  cvNamedWindow("Dabby Bird", 1);
   cvNamedWindow("Arm Detection", 1);
+  cvNamedWindow("BW Matte", 1);
 
   object_list_t *objects = init_game();
   int is_alive = 1;
+  clock_t last_frame = clock();
 
   while (cvWaitKey(10) != 'q') {
     frame = cvQueryFrame(capture);
@@ -51,8 +52,11 @@ int main(int argc, char **argv) {
         cvCvtColor(frame, frame, CV_BGR2HSV);
         cvReleaseImage(&arm);
         arm = get_arm(frame, c);
-        cvCircle(frame, cvPoint(10,10), 10, c->lower, 15);
-        cvCircle(frame, cvPoint(40,10), 10, c->upper, 15);
+        cv::Mat image1 = cv::cvarrToMat(arm, false);
+        cv::medianBlur(image1, image1, 11);
+        arm = cvCreateImage(cvSize(image1.cols,image1.rows),8,arm->nChannels);
+        IplImage ipltemp=image1;
+        cvCopy(&ipltemp,arm);
         cvCvtColor(frame, frame, CV_HSV2BGR);
         detect_hands(arm, hands);
 
@@ -65,7 +69,8 @@ int main(int argc, char **argv) {
           for_all(objects, flap);
         }
 
-        if (is_alive) {
+        if (is_alive && clock() - last_frame >= 50 * 1000) {
+          last_frame = clock();
           render_game(objects);
         }
         char c = 0;
@@ -75,7 +80,7 @@ int main(int argc, char **argv) {
           for_all(objects, flap);
         }
 
-        if (c == 'r') {
+        if (c == 'r' || c == 'R') {
           is_alive = 1;
           free_object_list(objects);
           objects = init_game();
@@ -92,7 +97,7 @@ int main(int argc, char **argv) {
 
         cvCircle(frame, cvPoint(hands->left_x, hands->left_y), 10, red, 15);
         cvCircle(frame, cvPoint(hands->right_x, hands->right_y), 10, red, 15);
-        cvShowImage("Arm Detection", arm);
+        cvShowImage("BW Matte", arm);
 
       } else {
         arm = cvCreateImage(cvGetSize(frame), IPL_DEPTH_8U, 1);
@@ -101,7 +106,7 @@ int main(int argc, char **argv) {
       cvReleaseImage(&prev_frame);
       prev_frame = cvCloneImage(frame);
       cvFlip(frame, frame, 1);
-      cvShowImage("Dabby Bird", frame);
+      cvShowImage("Arm Detection", frame);
     }
   }
 
@@ -110,8 +115,8 @@ int main(int argc, char **argv) {
   printf("\nYou died!\n");
   for_all(objects, print_object);
 
-  cvDestroyWindow("Dabby Bird");
   cvDestroyWindow("Arm Detection");
+  cvDestroyWindow("BW Matte");
   cvReleaseCapture(&capture);
   cvReleaseImage(&frame);
   cvReleaseImage(&prev_frame);

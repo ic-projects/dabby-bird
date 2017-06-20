@@ -327,7 +327,7 @@ object_list_t *init_game(void) {
   cbreak();
   initscr();
   noecho();
-  timeout(50);
+  timeout(1);
   setlocale(LC_ALL, "");
 
   start_color();
